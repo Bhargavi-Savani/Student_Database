@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Student Database</string>
+    <string name="UserNameText">User Id</string>
+    <string name="UserId">Enter Your User Id</string>
+    <string name="PasswordText">Password</string>
+    <string name="PswHint">Enter Your Password</string>
+    <string name="SubmitButton">Submit</string>
+    <string name="Prompt"> Enter Details</string>
+</resources>
