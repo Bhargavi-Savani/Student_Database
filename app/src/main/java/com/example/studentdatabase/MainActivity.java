@@ -1,5 +1,9 @@
 package com.example.studentdatabase;
 
+import com.google.api.services.sheets.v4.Sheets;
+import com.google.api.services.sheets.v4.model.*;
+import com.google.common.collect.Lists;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -8,11 +12,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.api.services.sheets.v4.model.ValueRange;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,17 +49,27 @@ public class MainActivity extends AppCompatActivity {
                 Id = UserId.getText().toString();
                 Psw = Password.getText().toString();
 
-                CredentialCheck(Id,Psw);
+                LoginDetails Credential = Encryption(Id,Psw);
+
+                try {
+                    CredentialCheck(Credential);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
     }
-    private void CredentialCheck(String s1,String s2) {
-        LoginDetails logindetails=new LoginDetails();
+    private void CredentialCheck(LoginDetails Crendentials) throws IOException {
+        LoginDetails loginInput=new LoginDetails();
 
         InputStream row = getResources().openRawResource(R.raw.trial);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
+
+        Sheets service = null;
+        ValueRange result = service.spreadsheets().values().get("1Lyzzb-iOt_elHetjFW0KR4Ui6pNpjKyLLjYXnbjOo0o","A2:B2").execute();
+
         int i=0;
         String line= null;
         String Str1="";
@@ -63,9 +81,11 @@ public class MainActivity extends AppCompatActivity {
             }
             android.util.Log.d("My Activity", "Line " + line);
             String[] tokens = line.split(",");
-            logindetails.setId(tokens[0]);
-            logindetails.setPassword(tokens[1]);
-            if(s1.equals(logindetails.getId()) && s2.equals(logindetails.getPassword()))
+            loginInput.setId(tokens[0]);
+            loginInput.setPassword(tokens[1]);
+
+
+            if(Crendentials.getId().equals(loginInput.getId()) && Crendentials.getPassword().equals(loginInput.getPassword()))
             {
                 Str1="Login Success full";
                 i=1;
@@ -78,5 +98,22 @@ public class MainActivity extends AppCompatActivity {
         TextView Prompt= findViewById(R.id.textView4);
         Prompt.setText(Str1);
 
+    }
+
+    private LoginDetails Encryption(String Id,String Password)
+    {
+        LoginDetails EncryptedDetails = new LoginDetails();
+        char[] id=null;
+        char[] psw=null;
+        int Key=100;
+        for(int i=0;i<Id.length();i++)
+            id[i]=(char)((int)Id.charAt(i)+Key);
+
+        for(int i=0;i<Password.length();i++)
+            psw[i] = (char)((int)Password.charAt(i)+Key);
+
+        EncryptedDetails.setId(String.valueOf(id));
+        EncryptedDetails.setPassword(String.valueOf(psw));
+        return EncryptedDetails;
     }
 }
