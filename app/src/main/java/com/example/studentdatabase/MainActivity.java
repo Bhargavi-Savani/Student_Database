@@ -1,9 +1,5 @@
 package com.example.studentdatabase;
 
-import com.google.api.services.sheets.v4.Sheets;
-import com.google.api.services.sheets.v4.model.*;
-import com.google.common.collect.Lists;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
 import java.io.BufferedReader;
@@ -19,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -67,8 +64,7 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 
-        Sheets service = null;
-        ValueRange result = service.spreadsheets().values().get("1Lyzzb-iOt_elHetjFW0KR4Ui6pNpjKyLLjYXnbjOo0o","A2:B2").execute();
+
 
         int i=0;
         String line= null;
@@ -79,8 +75,10 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            android.util.Log.d("My Activity", "Line " + line);
-            String[] tokens = line.split(",");
+            String[] tokens = new String[0];
+            if (line != null) {
+                tokens = line.split(",");
+            }
             loginInput.setId(tokens[0]);
             loginInput.setPassword(tokens[1]);
 
@@ -102,15 +100,36 @@ public class MainActivity extends AppCompatActivity {
 
     private LoginDetails Encryption(String Id,String Password)
     {
+         Sheets service = null;              // a variable of type Sheets to make api call
+        Sheets.Spreadsheets.Values.Get Call = null;     // api call
+        try {
+            assert service != null;
+            Call = service.spreadsheets().values().get("1Lyzzb-iOt_elHetjFW0KR4Ui6pNpjKyLLjYXnbjOo0o","B2");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ValueRange res= null;
+        try {
+            res = Call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        List<List<Object>> Value=res.getValues();
+
+
+
         LoginDetails EncryptedDetails = new LoginDetails();
         char[] id=null;
         char[] psw=null;
-        int Key=100;
+        String[] Key= (String[]) Value.toArray();
+        int key=25;
         for(int i=0;i<Id.length();i++)
-            id[i]=(char)((int)Id.charAt(i)+Key);
+            id[i]=(char)((int)Id.charAt(i)+key);
 
         for(int i=0;i<Password.length();i++)
-            psw[i] = (char)((int)Password.charAt(i)+Key);
+            psw[i] = (char)((int)Password.charAt(i)+key);
 
         EncryptedDetails.setId(String.valueOf(id));
         EncryptedDetails.setPassword(String.valueOf(psw));
