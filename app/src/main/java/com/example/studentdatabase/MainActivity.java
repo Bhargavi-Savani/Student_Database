@@ -1,5 +1,6 @@
 package com.example.studentdatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String MSG = "com.example.studentdatabase.Main";
 
     String Id,Psw;          //Variable to store data.
 
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     EditText Password;          //Variable to store id`s of view.
 
     Button SubmitButton;        //Variable to store id`s of view.
+
+    Intent intent = new Intent(this,Page3.class);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private void CredentialCheck(LoginDetails Credentials) throws IOException {
         LoginDetails loginInput=new LoginDetails();
 
-        InputStream row = getResources().openRawResource(R.raw.trial);
+        InputStream row = getResources().openRawResource(R.raw.encryption);
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 
@@ -87,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView Prompt= findViewById(R.id.textView4);
         Prompt.setText(Str1);
-
+        intent.putExtra(MSG,Credentials.getId());
+        startActivity(intent);
     }
 
     private LoginDetails Encryption(String Id,String Password)
@@ -95,7 +100,25 @@ public class MainActivity extends AppCompatActivity {
         LoginDetails EncryptedDetails = new LoginDetails();
         char[] id=new char[Id.length()];
         char[] psw=new char[Password.length()];
-        int Key=25;
+        int Key=0;
+
+        InputStream row = getResources().openRawResource(R.raw.key);
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(row, StandardCharsets.UTF_8));
+
+        String line = new String();
+        while (true) {
+            try {
+                if ((line = reader.readLine()) == null) break;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            android.util.Log.d("My Activity", "Line " + line);
+            String[] tokens = line.split(",");
+            if(tokens[0].equals(Id)) {
+                Key = Integer.parseInt(tokens[1]);
+            }
+        }
         for(int i=0;i<Id.length();i++)
             id[i]=(char)((int)Id.charAt(i)+Key);
 
