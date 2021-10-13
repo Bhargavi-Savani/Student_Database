@@ -27,14 +27,14 @@ public class MainActivity extends AppCompatActivity {
 
     Button SubmitButton;        //Variable to store id`s of view.
 
-    Intent intent = new Intent(this,Page3.class);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        UserId = findViewById(R.id.UserId);             //saving id of USerID text box.
+        UserId = findViewById(R.id.UserId);             //saving id of UserID text box.
         Password = findViewById(R.id.Password);         //saving id of password text box..
 
         SubmitButton = findViewById(R.id.SubButton);    //saving id of submit button.
@@ -57,29 +57,34 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+    // Function checks the credentials entered by the user
     private void CredentialCheck(LoginDetails Credentials) throws IOException {
+
+        Intent intent = new Intent(this,Page3.class); // an intent variable to transfer to next page
+
         LoginDetails loginInput=new LoginDetails();
 
-        InputStream row = getResources().openRawResource(R.raw.encryption);
+        InputStream row = getResources().openRawResource(R.raw.encryption); // getting the file from the system
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 
         int i=0;
-        String line = new String();
-        String Str1="";
+        String line = new String();     // Variable to store the line extracted from the file
+        String Str1="";     // Stores the message to be displayed
+
+        // A loop to iterate through the file to match the credentials
         while (true) {
             try {
                 if ((line = reader.readLine()) == null) break;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            android.util.Log.d("My Activity", "Line " + line);
-            String[] tokens = line.split(",");
+            String[] tokens = line.split(",");      // Storing the value of each column in form of array
             loginInput.setId(tokens[0]);
             loginInput.setPassword(tokens[1]);
 
 
-            if(Credentials.getId().equals(loginInput.getId()) && Credentials.getPassword().equals(loginInput.getPassword()))
+            if(Credentials.getId().equals(loginInput.getId()) && Credentials.getPassword().equals(loginInput.getPassword()))  // Validates the credentials
             {
                 Str1="Login Success full";
                 i=1;
@@ -91,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView Prompt= findViewById(R.id.textView4);
         Prompt.setText(Str1);
-        intent.putExtra(MSG,Credentials.getId());
-        startActivity(intent);
+        intent.putExtra(MSG,Credentials.getId());       // sends extra data to next page
+        startActivity(intent);     // starts page3 activity
     }
 
     private LoginDetails Encryption(String Id,String Password)
@@ -107,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 
         String line = new String();
+
+        // an iterative loop to fetch the key to the corresponding id
         while (true) {
             try {
                 if ((line = reader.readLine()) == null) break;
@@ -119,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 Key = Integer.parseInt(tokens[1]);
             }
         }
+
+        // two loops to encrypt the id and password entered by the user
         for(int i=0;i<Id.length();i++)
             id[i]=(char)((int)Id.charAt(i)+Key);
 
