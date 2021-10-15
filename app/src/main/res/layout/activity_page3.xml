@@ -7,41 +7,47 @@
     tools:context=".Page3">
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/studentprofile"
         android:layout_width="390dp"
         android:layout_height="90dp"
         android:layout_marginTop="100dp"
+        android:onClick="Student_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.012"
-        app:srcCompat="@drawable/sprofile" />
+        app:srcCompat="@drawable/sprofile"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/result"
         android:layout_width="390dp"
         android:layout_height="90dp"
         android:layout_marginTop="50dp"
+        android:onClick="Result"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintTop_toBottomOf="@+id/studentprofile"
         app:layout_constraintVertical_bias="0.185"
-        app:srcCompat="@drawable/result" />
+        app:srcCompat="@drawable/result"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/syllabus"
         android:layout_width="390dp"
         android:layout_height="90dp"
         android:layout_marginBottom="100dp"
+        android:onClick="Syllabus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.761"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/result"
         app:layout_constraintVertical_bias="0.949"
-        app:srcCompat="@drawable/syllabus" />
+        app:srcCompat="@drawable/syllabus"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -120,7 +120,6 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            android.util.Log.d("My Activity", "Line " + line);
             String[] tokens = line.split(",");
             if(tokens[0].equals(Id)) {
                 Key = Integer.parseInt(tokens[1]);
