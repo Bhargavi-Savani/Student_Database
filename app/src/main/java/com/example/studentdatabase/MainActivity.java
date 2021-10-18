@@ -27,12 +27,16 @@ public class MainActivity extends AppCompatActivity {
 
     Button SubmitButton;        //Variable to store id`s of view.
 
+    String UserRole = new String();     //Variable to Store the role(faculty/student) of the user
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent RoleType = getIntent();
+        UserRole=RoleType.getStringExtra(Page1.Role);   // gets the role
 
         UserId = findViewById(R.id.UserId);             //saving id of UserID text box.
         Password = findViewById(R.id.Password);         //saving id of password text box..
@@ -59,8 +63,13 @@ public class MainActivity extends AppCompatActivity {
     }
     // Function checks the credentials entered by the user
     private void CredentialCheck(LoginDetails Credentials) throws IOException {
-
-        Intent intent = new Intent(this,Page3.class); // an intent variable to transfer to next page
+        Intent intent;
+        if(UserRole.equals("Faculty")){
+            intent = new Intent(this,FirstPageTeachers.class); // an intent variable to transfer to next page of teachers
+        }
+        else {
+            intent = new Intent(this, Page3.class); // an intent variable to transfer to next page of students
+        }
 
         LoginDetails loginInput=new LoginDetails();
 

@@ -19,25 +19,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentDatabase">
         <activity
-            android:name=".Page1"
+            android:name=".FirstPageTeachers"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true" />
         <activity
             android:name=".Syllabus"
             android:exported="true"
-            android:parentActivityName=".Page3"/>
+            android:parentActivityName=".Page3" />
         <activity
             android:name=".Result"
             android:exported="true"
-            android:parentActivityName=".Page3"/>
+            android:parentActivityName=".Page3" />
         <activity
             android:name=".StudentProfile"
             android:exported="true"
-            android:parentActivityName=".Page3"/>
+            android:parentActivityName=".Page3" />
         <activity
             android:name=".Page3"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Page1"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
