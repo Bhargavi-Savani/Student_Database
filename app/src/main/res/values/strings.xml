@@ -17,4 +17,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <string name="S_ID"></string>
+    <string name="F_Name"></string>
+    <string name="Batch"></string>
+    <string name="Semester"></string>
+    <string name="Programme"></string>
+    <string name="Department"></string>
+    <string name="College"></string>
 </resources>
