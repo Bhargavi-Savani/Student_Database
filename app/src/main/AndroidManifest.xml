@@ -20,7 +20,8 @@
         android:theme="@style/Theme.StudentDatabase">
         <activity
             android:name=".Result_home"
-            android:exported="true" />
+            android:exported="true"
+            android:parentActivityName=".Page3" />
         <activity
             android:name=".FirstPageTeachers"
             android:exported="true" />
@@ -34,7 +35,7 @@
         <activity
             android:name=".Result"
             android:exported="true"
-            android:parentActivityName=".Page3" />
+            android:parentActivityName=".Result_home" />
         <activity
             android:name=".StudentProfile"
             android:exported="true"
