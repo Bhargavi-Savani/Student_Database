@@ -28,7 +28,7 @@ public class Page3 extends AppCompatActivity {
     }
 
     public void Result(View view){
-        Intent Result_intent = new Intent(this,Result.class);
+        Intent Result_intent = new Intent(this,Result_home.class);
         Result_intent.putExtra(Student_ID,Id);
         startActivity(Result_intent);
     }
