@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StudentDatabase">
         <activity
+            android:name=".Result_home"
+            android:exported="true" />
+        <activity
             android:name=".FirstPageTeachers"
             android:exported="true" />
         <activity
