@@ -18,11 +18,19 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="S_ID"></string>
-    <string name="F_Name"></string>
-    <string name="Batch"></string>
-    <string name="Semester"></string>
-    <string name="Programme"></string>
-    <string name="Department"></string>
-    <string name="College"></string>
+    <string name="Course">Course</string>
+    <string name="Credit">Credit</string>
+    <string name="Grade">Grade</string>
+
+    <string name="Semester">Semester</string>
+    <string name="Cumalative">Cumalative</string>s
+    <string name="Total_Credit">Total Credit</string>
+    <string name="Credit_Earned">Credit Earned</string>
+    <string name="SGPA">SGPA</string>
+    <string name="CGPA">CGPA</string>
+
+    <string name="Name">Name</string>
+    <string name="ID">Student ID</string>
+
+
 </resources>
