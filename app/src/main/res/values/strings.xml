@@ -25,4 +25,7 @@
     <string name="Programme"></string>
     <string name="Department"></string>
     <string name="College"></string>
+
+    <string name="Select">Year</string>
+
 </resources>
