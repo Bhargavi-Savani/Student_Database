@@ -1,10 +1,18 @@
 package com.example.studentdatabase;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.studentdatabase.model.Student;
+import com.google.gson.Gson;
 
 public class Result extends AppCompatActivity {
 
@@ -64,7 +72,46 @@ public class Result extends AppCompatActivity {
         TextView CGPA = findViewById(R.id.textView46);
 
 
-//        TODO Create Object and API call
+//        TODO 2 Create Object and API call
+        /**
+         * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
+         * Run 'ipconfig' at cmd to find it.
+         */
+        String IPAddress = "192.168.0.193";
+        String URL = "http://"+ IPAddress + ":8080/api/student";
+        Gson gson = new Gson();
+        String req="/" + "20CS075";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest objectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                URL + req,
+                null,
+                response -> {
+                    Log.e("GET Response ",response.toString());
+                    String res = response.toString();
+                    System.out.println(res);
+                    Student found = gson.fromJson(res, Student.class);
+
+                    System.out.println("FOUND IN RESPONSE:\n\n\n " + found);
+
+                    StudentDetails Profile_obj = new StudentDetails();
+                    Profile_obj.setId(found.getStudentId());
+                    Profile_obj.setName(found.getStudentName());
+
+                    //Student_Id.setText(Profile_obj.getId());
+                    Name.setText(Profile_obj.getName());
+                    Semester.setText(Profile_obj.getSemester());
+                    //Programme.setText(Profile_obj.getProgramme());
+                    //College.setText(Profile_obj.getCollege());
+                },
+                error -> {
+                    Log.e("GET Error Response ",error.toString());
+                    String res = error.toString();
+                    System.out.println(res);
+                }
+        );
+        requestQueue.add(objectRequest);
+//     TODO 2.
     }
 
 

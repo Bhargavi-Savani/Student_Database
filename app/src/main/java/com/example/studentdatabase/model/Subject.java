@@ -18,6 +18,17 @@ public class Subject {
         this.gradePoint = gradePoint;
     }
 
+    @Override
+    public String toString() {
+        return "Subject{" +
+                "subCode='" + subCode + '\'' +
+                ", subName='" + subName + '\'' +
+                ", credit=" + credit +
+                ", grade='" + grade + '\'' +
+                ", gradePoint=" + gradePoint +
+                '}';
+    }
+
     public String getSubCode() {
         return subCode;
     }

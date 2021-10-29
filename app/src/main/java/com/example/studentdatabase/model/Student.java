@@ -1,11 +1,26 @@
 package com.example.studentdatabase.model;
 
-public class Student {
-    String id;
-    String studentId;
-    String studentName;
+public class Student implements Cloneable {
+    String id = "15";
+    String studentId = "52";
+    String studentName = "xyz";
     Semester s1;
     Semester s2;
+
+    public Object clone()throws CloneNotSupportedException{
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", studentId='" + studentId + '\'' +
+                ", studentName='" + studentName + '\'' +
+                ", s1=" + s1 +
+                ", s2=" + s2 +
+                '}';
+    }
 
     public Student() {
     }
