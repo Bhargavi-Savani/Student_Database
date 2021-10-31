@@ -1,12 +1,12 @@
 package com.example.studentdatabase;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,9 +15,10 @@ import com.android.volley.toolbox.Volley;
 import com.example.studentdatabase.model.Student;
 import com.google.gson.Gson;
 
-public class Result extends AppCompatActivity {
+public class view_result extends AppCompatActivity {
 
-    String loginId = new String();
+
+    String Id = new String();
     String Sem = new String();
 
     TextView Name;
@@ -41,19 +42,16 @@ public class Result extends AppCompatActivity {
     TextView Earned_credit;
     TextView CGPA;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
-
+        setContentView(R.layout.activity_view_result);
         Sub = new TextView[Size];
         Sub_credit = new TextView[Size];
         Sub_grade = new TextView[Size];
 
         Intent intent = getIntent();
-//        loginId = intent.getStringExtra(MainActivity.MSG);
-        loginId = intent.getStringExtra(Result_home.Id_Sender);
+        Id = intent.getStringExtra(view_result_intermediate.Sender);
         Sem = intent.getStringExtra(Result_home.Sem_Sender);
 
         Name = findViewById(R.id.student_name);
@@ -106,10 +104,9 @@ public class Result extends AppCompatActivity {
          * Run 'ipconfig' at cmd to find it.
          */
         String IPAddress = "192.168.28.37";
-        String IPAddress1 = "192.168.0.193";
-        String URL = "http://"+ IPAddress1 + ":8080/api/student";
+        String URL = "http://"+ IPAddress + ":8080/api/student";
         Gson gson = new Gson();
-        String req="/" + loginId;
+        String req="/" + "20CS075";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         @SuppressLint("SetTextI18n") JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -143,7 +140,7 @@ public class Result extends AppCompatActivity {
         Profile_obj.setName(found.getStudentName());
 
         Name.setText(Profile_obj.getName());
-        ID.setText(loginId);
+        ID.setText(Id);
 
         if(Sem.equals("1")){
             final int size = found.getS1().getSubjects().size();
@@ -195,7 +192,7 @@ public class Result extends AppCompatActivity {
             }
             double Sgpa = SGPA_Numerator / Credit_sum;
 
-            SGPA.setText(Double.toString(Math.round(Sgpa)));
+            SGPA.setText(Double.toString(Sgpa));
 
             for (int i = 0; i < size; i++) {
                 CGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
@@ -210,7 +207,7 @@ public class Result extends AppCompatActivity {
             }
             double Cgpa = CGPA_Numerator / Credit_sum;
 
-            CGPA.setText(Double.toString(Math.round(Cgpa)));
+            CGPA.setText(Double.toString(Cgpa));
         }
         Semester.setText(Sem);
     }

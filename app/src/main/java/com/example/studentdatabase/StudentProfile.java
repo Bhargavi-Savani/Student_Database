@@ -50,12 +50,12 @@ public class StudentProfile extends AppCompatActivity {
         Intent  intent = getIntent();
         loginId = intent.getStringExtra(Page3.Student_ID);
 
-        Student_Id = findViewById(R.id.textView12);
-        Name = findViewById(R.id.textView13);
+        Student_Id = findViewById(R.id.grade3);
+        Name = findViewById(R.id.sub4);
         Batch = findViewById(R.id.textView14);
-        Semester = findViewById(R.id.textView15);
-        Programme = findViewById(R.id.textView16);
-        College = findViewById(R.id.textView17);
+        Semester = findViewById(R.id.grade4);
+        Programme = findViewById(R.id.sub5);
+        College = findViewById(R.id.credit5);
 
 //    TODO 1. Api call and convert it into object
         /**

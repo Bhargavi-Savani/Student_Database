@@ -20,6 +20,27 @@
         android:theme="@style/Theme.StudentDatabase"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".modify_student_intermediate"
+            android:exported="true" />
+        <activity
+            android:name=".add_student_intermediate"
+            android:exported="true" />
+        <activity
+            android:name=".view_result_intermediate"
+            android:exported="true" />
+        <activity
+            android:name=".view_result"
+            android:exported="true" />
+        <activity
+            android:name=".modify_student"
+            android:exported="true" />
+        <activity
+            android:name=".delete_student"
+            android:exported="true" />
+        <activity
+            android:name=".add_student"
+            android:exported="true" />
+        <activity
             android:name=".Result_home"
             android:exported="true"
             android:parentActivityName=".Page3" />
