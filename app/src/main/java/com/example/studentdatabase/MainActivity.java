@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     public static final String MSG = "com.example.studentdatabase.Main";
 
     String Id,Psw;          //Variable to store data.
-    String unencryptedId;
 
     EditText UserId;            //Variable to store id`s of view.
     EditText Password;          //Variable to store id`s of view.
@@ -48,8 +47,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Id = UserId.getText().toString();
-                unencryptedId = Id;
                 Psw = Password.getText().toString();
+
+                GlobalClasss.Student_Id = Id;
 
                 LoginDetails Credential = Encryption(Id,Psw);
 
@@ -106,8 +106,6 @@ public class MainActivity extends AppCompatActivity {
 
         TextView Prompt= findViewById(R.id.sub1);
         Prompt.setText(Str1);
-        //intent.putExtra(MSG,Credentials.getId());       // sends extra data to next page
-        intent.putExtra(MSG,unencryptedId);
         startActivity(intent);     // starts page3 activity
     }
 

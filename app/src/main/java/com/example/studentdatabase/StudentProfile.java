@@ -20,9 +20,6 @@ import org.json.JSONObject;
 
 public class StudentProfile extends AppCompatActivity {
 
-    String temp;
-
-    String loginId = new String();
 
     TextView Student_Id;
     TextView Name;
@@ -47,9 +44,6 @@ public class StudentProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
 
-        Intent  intent = getIntent();
-        loginId = intent.getStringExtra(Page3.Student_ID);
-
         Student_Id = findViewById(R.id.grade3);
         Name = findViewById(R.id.sub4);
         Batch = findViewById(R.id.textView14);
@@ -64,9 +58,9 @@ public class StudentProfile extends AppCompatActivity {
          */
         String IPAddress = "192.168.28.37";
         String IPAddress1 = "192.168.0.193";
-        String URL = "http://"+ IPAddress1 + ":8080/api/student";
+        String URL = "http://"+ IPAddress + ":8080/api/student";
         Gson gson = new Gson();
-        String req="/" + loginId;
+        String req="/" + GlobalClasss.Student_Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,

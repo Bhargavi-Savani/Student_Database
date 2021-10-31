@@ -9,22 +9,17 @@ import androidx.appcompat.app.AppCompatActivity;
 public class Result_home extends AppCompatActivity {
 
     public static final String Sem_Sender = "com.example.studentdatabase.sem";
-    public static final String Id_Sender = "loginId";
-    String loginId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_home);
-        Intent intent = getIntent();
-        loginId = intent.getStringExtra(Page3.Student_ID);
     }
 
     public void sem1_result(View view){
         String sem = "1";
         Intent sem1_intent = new Intent(this,Result.class);
         sem1_intent.putExtra(Sem_Sender,sem);
-        sem1_intent.putExtra(Id_Sender,loginId);
         startActivity(sem1_intent);
     }
 
@@ -32,7 +27,6 @@ public class Result_home extends AppCompatActivity {
         String sem = "2";
         Intent sem1_intent = new Intent(this,Result.class);
         sem1_intent.putExtra(Sem_Sender,sem);
-        sem1_intent.putExtra(Id_Sender,loginId);
         startActivity(sem1_intent);
     }
 }

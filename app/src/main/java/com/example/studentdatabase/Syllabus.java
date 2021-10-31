@@ -49,7 +49,7 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
         if(adapterView.getId() ==  R.id.dropdown_menu){
             String Semester = adapterView.getItemAtPosition(i).toString();
 
-            textView2.setText("Link for " + Semester + "Syllabus is");
+            textView2.setText("Link for " + Semester + " Syllabus is");
 
             if(Semester.equals("First")){
                 textView1.setText(SyllabusLink[0]);
