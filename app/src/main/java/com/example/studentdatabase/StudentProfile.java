@@ -24,8 +24,17 @@ import java.util.ArrayList;
 
 public class StudentProfile extends AppCompatActivity {
 
+    String temp;
+
     String Id = new String();
     static Student current;
+
+    TextView Student_Id;
+    TextView Name;
+    TextView Batch;
+    TextView Semester;
+    TextView Programme;
+    TextView College;
 
     static void setCurrent(String studentId, String studentName, Semester s1, Semester s2){
         current = new Student();
@@ -46,19 +55,19 @@ public class StudentProfile extends AppCompatActivity {
         Intent  intent = getIntent();
         Id = intent.getStringExtra(Page3.Student_ID);
 
-        TextView Student_Id = findViewById(R.id.textView12);
-        TextView Name = findViewById(R.id.textView13);
-        TextView Batch = findViewById(R.id.textView14);
-        TextView Semester = findViewById(R.id.textView15);
-        TextView Programme = findViewById(R.id.textView16);
-        TextView College = findViewById(R.id.textView17);
+        Student_Id = findViewById(R.id.textView12);
+        Name = findViewById(R.id.textView13);
+        Batch = findViewById(R.id.textView14);
+        Semester = findViewById(R.id.textView15);
+        Programme = findViewById(R.id.textView16);
+        College = findViewById(R.id.textView17);
 
 //    TODO 1. Api call and convert it into object
         /**
          * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
          * Run 'ipconfig' at cmd to find it.
          */
-        String IPAddress = "192.168.0.193";
+        String IPAddress = "192.168.28.37";
         String URL = "http://"+ IPAddress + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + "20CS075";
@@ -82,16 +91,7 @@ public class StudentProfile extends AppCompatActivity {
                         System.out.println("FOUND IN RESPONSE:\n\n\n " + found);
                         System.out.println("CURRENT IN RESPONSE:\n\n\n " + current);
 
-                        StudentDetails Profile_obj = new StudentDetails();
-                        Profile_obj.setId(current.getStudentId());
-                        Profile_obj.setName(current.getStudentName());
-
-                        Student_Id.setText(Profile_obj.getId());
-                        Name.setText(Profile_obj.getName());
-                        Batch.setText(Profile_obj.getBatch());
-                        Semester.setText(Profile_obj.getSemester());
-                        Programme.setText(Profile_obj.getProgramme());
-                        College.setText(Profile_obj.getCollege());
+                        Screen_output(found);
                     }
                 },
                 new Response.ErrorListener() {
@@ -104,18 +104,23 @@ public class StudentProfile extends AppCompatActivity {
                 }
         );
         requestQueue.add(objectRequest);
-        System.out.println("CURRENT OUT:\n\n\n\n\n " + current);
-//     TODO 1.
-        /* StudentDetails Profile_obj = new StudentDetails();
-        Profile_obj.setId(current.getStudentId());
-        Profile_obj.setName(current.getStudentName());
+        System.out.println("CURRENT OUT:\n\n\n\n\n " + temp);
+    }
+
+    public void Screen_output(Student found){
+
+        StudentDetails Profile_obj = new StudentDetails();
+
+        Profile_obj.setId(found.getStudentId());
+        Profile_obj.setName(found.getStudentName());
 
         Student_Id.setText(Profile_obj.getId());
         Name.setText(Profile_obj.getName());
         Batch.setText(Profile_obj.getBatch());
         Semester.setText(Profile_obj.getSemester());
         Programme.setText(Profile_obj.getProgramme());
-        College.setText(Profile_obj.getCollege()); */
+        College.setText(Profile_obj.getCollege());
+
     }
 
 }

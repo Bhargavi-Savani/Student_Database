@@ -1,5 +1,6 @@
 package com.example.studentdatabase;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,57 +20,83 @@ public class Result extends AppCompatActivity {
     String Id = new String();
     String Sem = new String();
 
+    TextView Name;
+    TextView ID;
+
+    final int Size = 9;
+
+    TextView[] Sub;
+
+    TextView[] Sub_credit;
+
+    TextView[] Sub_grade;
+
+    TextView Semester;
+    TextView Total_Credit_sem ;
+    TextView Earned_credit_sem;
+    TextView SGPA;
+
+    TextView Cumulative;
+    TextView Total_Credit;
+    TextView Earned_credit;
+    TextView CGPA;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        Sub = new TextView[Size];
+        Sub_credit = new TextView[Size];
+        Sub_grade = new TextView[Size];
+
         Intent intent = getIntent();
         Id = intent.getStringExtra(MainActivity.MSG);
         Sem = intent.getStringExtra(Result_home.Sem_Sender);
 
-        TextView Name = findViewById(R.id.textView48);
-        TextView ID = findViewById(R.id.textView50);
+        Name = findViewById(R.id.textView48);
+        ID = findViewById(R.id.textView50);
 
-        TextView Sub1 = findViewById(R.id.textView4);
-        TextView Sub2 = findViewById(R.id.textView7);
-        TextView Sub3 = findViewById(R.id.textView10);
-        TextView Sub4 = findViewById(R.id.textView13);
-        TextView Sub5 = findViewById(R.id.textView16);
-        TextView Sub6 = findViewById(R.id.textView19);
-        TextView Sub7 = findViewById(R.id.textView22);
-        TextView Sub8 = findViewById(R.id.textView25);
-        TextView Sub9 = findViewById(R.id.textView28);
+        Sub[0] = findViewById(R.id.textView4);
+        Sub[1] = findViewById(R.id.textView7);
+        Sub[2] = findViewById(R.id.textView10);
+        Sub[3] = findViewById(R.id.textView13);
+        Sub[4] = findViewById(R.id.textView16);
+        Sub[5] = findViewById(R.id.textView19);
+        Sub[6] = findViewById(R.id.textView22);
+        Sub[7] = findViewById(R.id.textView25);
+        Sub[8] = findViewById(R.id.textView28);
 
-        TextView Sub1_credit = findViewById(R.id.textView5);
-        TextView Sub2_credit = findViewById(R.id.textView8);
-        TextView Sub3_credit = findViewById(R.id.textView11);
-        TextView Sub4_credit = findViewById(R.id.textView14);
-        TextView Sub5_credit = findViewById(R.id.textView17);
-        TextView Sub6_credit = findViewById(R.id.textView20);
-        TextView Sub7_credit = findViewById(R.id.textView23);
-        TextView Sub8_credit = findViewById(R.id.textView26);
-        TextView Sub9_credit = findViewById(R.id.textView29);
+        Sub_credit[0] = findViewById(R.id.textView5);
+        Sub_credit[1] = findViewById(R.id.textView8);
+        Sub_credit[2] = findViewById(R.id.textView11);
+        Sub_credit[3] = findViewById(R.id.sub4credit);
+        Sub_credit[4] = findViewById(R.id.textView17);
+        Sub_credit[5] = findViewById(R.id.textView20);
+        Sub_credit[6] = findViewById(R.id.textView23);
+        Sub_credit[7] = findViewById(R.id.textView26);
+        Sub_credit[8] = findViewById(R.id.textView29);
 
-        TextView Sub1_grade = findViewById(R.id.textView6);
-        TextView Sub2_grade = findViewById(R.id.textView9);
-        TextView Sub3_grade = findViewById(R.id.textView12);
-        TextView Sub4_grade = findViewById(R.id.textView15);
-        TextView Sub5_grade = findViewById(R.id.textView18);
-        TextView Sub6_grade = findViewById(R.id.textView21);
-        TextView Sub7_grade = findViewById(R.id.textView24);
-        TextView Sub8_grade = findViewById(R.id.textView27);
-        TextView Sub9_grade = findViewById(R.id.textView30);
+        Sub_grade[0] = findViewById(R.id.textView6);
+        Sub_grade[1] = findViewById(R.id.textView9);
+        Sub_grade[2] = findViewById(R.id.textView12);
+        Sub_grade[3] = findViewById(R.id.textView15);
+        Sub_grade[4] = findViewById(R.id.textView18);
+        Sub_grade[5] = findViewById(R.id.textView21);
+        Sub_grade[6] = findViewById(R.id.textView24);
+        Sub_grade[7] = findViewById(R.id.textView27);
+        Sub_grade[8] = findViewById(R.id.textView30);
 
-        TextView Semester = findViewById(R.id.textView35);
-        TextView Total_Credit_sem = findViewById(R.id.textView36);
-        TextView Earned_credit_sem = findViewById(R.id.textView37);
-        TextView SGPA = findViewById(R.id.textView38);
+        Semester = findViewById(R.id.textView35);
+        Total_Credit_sem = findViewById(R.id.textView36);
+        Earned_credit_sem = findViewById(R.id.textView37);
+        SGPA = findViewById(R.id.textView38);
 
-        TextView Cumulative = findViewById(R.id.textView43);
-        TextView Total_Credit = findViewById(R.id.textView44);
-        TextView Earned_credit = findViewById(R.id.textView45);
-        TextView CGPA = findViewById(R.id.textView46);
+        Cumulative = findViewById(R.id.textView43);
+        Total_Credit = findViewById(R.id.textView44);
+        Earned_credit = findViewById(R.id.textView45);
+        CGPA = findViewById(R.id.textView46);
 
 
 //        TODO 2 Create Object and API call
@@ -77,12 +104,12 @@ public class Result extends AppCompatActivity {
          * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
          * Run 'ipconfig' at cmd to find it.
          */
-        String IPAddress = "192.168.0.193";
+        String IPAddress = "192.168.28.37";
         String URL = "http://"+ IPAddress + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + "20CS075";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest objectRequest = new JsonObjectRequest(
+        @SuppressLint("SetTextI18n") JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL + req,
                 null,
@@ -94,15 +121,8 @@ public class Result extends AppCompatActivity {
 
                     System.out.println("FOUND IN RESPONSE:\n\n\n " + found);
 
-                    StudentDetails Profile_obj = new StudentDetails();
-                    Profile_obj.setId(found.getStudentId());
-                    Profile_obj.setName(found.getStudentName());
+                    Result_Output(found);
 
-                    //Student_Id.setText(Profile_obj.getId());
-                    Name.setText(Profile_obj.getName());
-                    Semester.setText(Profile_obj.getSemester());
-                    //Programme.setText(Profile_obj.getProgramme());
-                    //College.setText(Profile_obj.getCollege());
                 },
                 error -> {
                     Log.e("GET Error Response ",error.toString());
@@ -114,5 +134,82 @@ public class Result extends AppCompatActivity {
 //     TODO 2.
     }
 
+    @SuppressLint("SetTextI18n")
+    public void Result_Output(Student found){
+        StudentDetails Profile_obj = new StudentDetails();
+        Profile_obj.setId(found.getStudentId());
+        Profile_obj.setName(found.getStudentName());
 
+        Name.setText(Profile_obj.getName());
+        ID.setText(Id);
+
+        if(Sem.equals("1")){
+            final int size = found.getS1().getSubjects().size();
+
+            for(int i = 0; i < size ; i++) {
+                Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode());
+                Sub_credit[i].setText(Double.toString(found.getS1().getSubjects().get(i).getCredit()));
+                Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade());
+            }
+
+            double SGPA_Numerator = 0;
+            double Credit_sum = 0;
+
+
+            for (int i = 0; i < size; i++) {
+                SGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
+                        found.getS1().getSubjects().get(i).getGradePoint();
+
+                Credit_sum += found.getS1().getSubjects().get(i).getCredit();
+            }
+            double Sgpa = SGPA_Numerator / Credit_sum;
+
+
+            SGPA.setText(Double.toString(Math.round(Sgpa)));
+            Total_Credit_sem.setText(Double.toString(Credit_sum));
+            CGPA.setText(Double.toString(Math.round(Sgpa)));
+            Total_Credit.setText(Double.toString(Credit_sum));
+
+        }
+        else{
+
+            final int size = found.getS2().getSubjects().size();
+
+            for(int i = 0; i < size ; i++) {
+                Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode());
+                Sub_credit[i].setText(Double.toString(found.getS2().getSubjects().get(i).getCredit()));
+                Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade());
+            }
+
+            double SGPA_Numerator = 0;
+            double CGPA_Numerator = 0;
+            double Credit_sum = 0;
+
+            for (int i = 0; i < size; i++) {
+                SGPA_Numerator += found.getS2().getSubjects().get(i).getCredit() *
+                        found.getS2().getSubjects().get(i).getGradePoint();
+
+                Credit_sum += found.getS2().getSubjects().get(i).getCredit();
+            }
+            double Sgpa = SGPA_Numerator / Credit_sum;
+
+            SGPA.setText(Double.toString(Sgpa));
+
+            for (int i = 0; i < size; i++) {
+                CGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
+                        found.getS1().getSubjects().get(i).getGradePoint();
+
+                CGPA_Numerator += found.getS2().getSubjects().get(i).getCredit() *
+                        found.getS2().getSubjects().get(i).getGradePoint();
+
+                Credit_sum += found.getS1().getSubjects().get(i).getCredit();
+
+                Credit_sum += found.getS2().getSubjects().get(i).getCredit();
+            }
+            double Cgpa = CGPA_Numerator / Credit_sum;
+
+            CGPA.setText(Double.toString(Cgpa));
+        }
+        Semester.setText(Sem);
+    }
 }
