@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         if(i==0)
             Str1="Login Failed";
 
-        TextView Prompt= findViewById(R.id.textView4);
+        TextView Prompt= findViewById(R.id.sub1);
         Prompt.setText(Str1);
         intent.putExtra(MSG,Credentials.getId());       // sends extra data to next page
         startActivity(intent);     // starts page3 activity

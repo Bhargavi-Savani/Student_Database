@@ -1,12 +1,12 @@
 package com.example.studentdatabase;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,7 +15,8 @@ import com.android.volley.toolbox.Volley;
 import com.example.studentdatabase.model.Student;
 import com.google.gson.Gson;
 
-public class Result extends AppCompatActivity {
+public class view_result extends AppCompatActivity {
+
 
     String Id = new String();
     String Sem = new String();
@@ -41,18 +42,16 @@ public class Result extends AppCompatActivity {
     TextView Earned_credit;
     TextView CGPA;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_result);
-
+        setContentView(R.layout.activity_view_result);
         Sub = new TextView[Size];
         Sub_credit = new TextView[Size];
         Sub_grade = new TextView[Size];
 
         Intent intent = getIntent();
-        Id = intent.getStringExtra(MainActivity.MSG);
+        Id = intent.getStringExtra(view_result_intermediate.Sender);
         Sem = intent.getStringExtra(Result_home.Sem_Sender);
 
         Name = findViewById(R.id.student_name);
