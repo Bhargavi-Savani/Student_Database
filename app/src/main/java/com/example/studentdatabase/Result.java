@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 
 public class Result extends AppCompatActivity {
 
-    String Id = new String();
+    String loginId = new String();
     String Sem = new String();
 
     TextView Name;
@@ -52,7 +52,8 @@ public class Result extends AppCompatActivity {
         Sub_grade = new TextView[Size];
 
         Intent intent = getIntent();
-        Id = intent.getStringExtra(MainActivity.MSG);
+//        loginId = intent.getStringExtra(MainActivity.MSG);
+        loginId = intent.getStringExtra(Result_home.Id_Sender);
         Sem = intent.getStringExtra(Result_home.Sem_Sender);
 
         Name = findViewById(R.id.textView48);
@@ -105,9 +106,10 @@ public class Result extends AppCompatActivity {
          * Run 'ipconfig' at cmd to find it.
          */
         String IPAddress = "192.168.28.37";
-        String URL = "http://"+ IPAddress + ":8080/api/student";
+        String IPAddress1 = "192.168.0.193";
+        String URL = "http://"+ IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
-        String req="/" + "20CS075";
+        String req="/" + loginId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         @SuppressLint("SetTextI18n") JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -141,7 +143,7 @@ public class Result extends AppCompatActivity {
         Profile_obj.setName(found.getStudentName());
 
         Name.setText(Profile_obj.getName());
-        ID.setText(Id);
+        ID.setText(loginId);
 
         if(Sem.equals("1")){
             final int size = found.getS1().getSubjects().size();
@@ -193,7 +195,7 @@ public class Result extends AppCompatActivity {
             }
             double Sgpa = SGPA_Numerator / Credit_sum;
 
-            SGPA.setText(Double.toString(Sgpa));
+            SGPA.setText(Double.toString(Math.round(Sgpa)));
 
             for (int i = 0; i < size; i++) {
                 CGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
@@ -208,7 +210,7 @@ public class Result extends AppCompatActivity {
             }
             double Cgpa = CGPA_Numerator / Credit_sum;
 
-            CGPA.setText(Double.toString(Cgpa));
+            CGPA.setText(Double.toString(Math.round(Cgpa)));
         }
         Semester.setText(Sem);
     }

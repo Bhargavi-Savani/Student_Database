@@ -1,9 +1,11 @@
 package com.example.studentdatabase.model;
 
+import java.util.ArrayList;
+
 public class Student implements Cloneable {
-    String id = "15";
-    String studentId = "52";
-    String studentName = "xyz";
+    String id;
+    String studentId;
+    String studentName;
     Semester s1;
     Semester s2;
 
@@ -23,6 +25,29 @@ public class Student implements Cloneable {
     }
 
     public Student() {
+        ArrayList<Subject> sub1 = new ArrayList<>();
+        ArrayList<Subject> sub2 = new ArrayList<>();
+
+        sub1.add(new Subject("CE143","Computer Concepts & Programming (TH)"));
+        sub1.add(new Subject("CE143","Computer Concepts & Programming (PR)"));
+        sub1.add(new Subject("EE145","Basics of Electronics & Electrical Engineering (TH)"));
+        sub1.add(new Subject("EE145","Basics of Electronics & Electrical Engineering (PR)"));
+        sub1.add(new Subject("HS101.02A","Communicative English (PR)"));
+        sub1.add(new Subject("IT144","ICT Workshop (PR)"));
+        sub1.add(new Subject("MA143","Engineering Mathematics-I (TH)"));
+        sub1.add(new Subject("PY142","Engineering Physics - I (PR)"));
+
+        sub2.add(new Subject("CE144","Object Oriented Programming with C++ (TH)"));
+        sub2.add(new Subject("CE144","Object Oriented Programming with C++ (PR)"));
+        sub2.add(new Subject("CL144.02A","Environmental Sciences (PR)"));
+        sub2.add(new Subject("HS202","Liberal Arts (PR)"));
+        sub2.add(new Subject("MA144","Engineering Mathematics-II (TH)"));
+        sub2.add(new Subject("ME145","Elements of Engineering (TH)"));
+        sub2.add(new Subject("ME145","Elements of Engineering (PR)"));
+        sub2.add(new Subject("PY143","Engineering Physics - II"));
+
+        s1 = new Semester(1, sub1);
+        s2 = new Semester(2, sub2);
     }
 
     public Student(String studentId, String studentName, Semester s1, Semester s2) {

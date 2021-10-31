@@ -10,6 +10,11 @@ public class Subject {
     public Subject() {
     }
 
+    public Subject(String subCode, String subName) {
+        this.subCode = subCode;
+        this.subName = subName;
+    }
+
     public Subject(String subCode, String subName, double credit, String grade, int gradePoint) {
         this.subCode = subCode;
         this.subName = subName;

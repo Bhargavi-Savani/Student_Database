@@ -13,21 +13,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.studentdatabase.model.Semester;
 import com.example.studentdatabase.model.Student;
-import com.example.studentdatabase.model.Subject;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class StudentProfile extends AppCompatActivity {
 
     String temp;
 
-    String Id = new String();
-    static Student current;
+    String loginId = new String();
 
     TextView Student_Id;
     TextView Name;
@@ -36,7 +31,7 @@ public class StudentProfile extends AppCompatActivity {
     TextView Programme;
     TextView College;
 
-    static void setCurrent(String studentId, String studentName, Semester s1, Semester s2){
+    /*static void setCurrent(String studentId, String studentName, Semester s1, Semester s2){
         current = new Student();
         current.setStudentId(studentId);
         current.setStudentName(studentName);
@@ -46,14 +41,14 @@ public class StudentProfile extends AppCompatActivity {
         ArrayList<Subject> sub2 = new ArrayList<>();
         sub2.addAll(s2.getSubjects());
         current.setS2(new Semester(s2.getSem(), sub2));
-    }
+    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
 
         Intent  intent = getIntent();
-        Id = intent.getStringExtra(Page3.Student_ID);
+        loginId = intent.getStringExtra(Page3.Student_ID);
 
         Student_Id = findViewById(R.id.textView12);
         Name = findViewById(R.id.textView13);
@@ -68,9 +63,10 @@ public class StudentProfile extends AppCompatActivity {
          * Run 'ipconfig' at cmd to find it.
          */
         String IPAddress = "192.168.28.37";
-        String URL = "http://"+ IPAddress + ":8080/api/student";
+        String IPAddress1 = "192.168.0.193";
+        String URL = "http://"+ IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
-        String req="/" + "20CS075";
+        String req="/" + loginId;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -83,13 +79,7 @@ public class StudentProfile extends AppCompatActivity {
                         String res = response.toString();
                         System.out.println(res);
                         Student found = gson.fromJson(res, Student.class);
-                        setCurrent(found.getStudentId(),
-                                found.getStudentName(),
-                                found.getS1(),
-                                found.getS2()
-                        );
                         System.out.println("FOUND IN RESPONSE:\n\n\n " + found);
-                        System.out.println("CURRENT IN RESPONSE:\n\n\n " + current);
 
                         Screen_output(found);
                     }
@@ -104,7 +94,6 @@ public class StudentProfile extends AppCompatActivity {
                 }
         );
         requestQueue.add(objectRequest);
-        System.out.println("CURRENT OUT:\n\n\n\n\n " + temp);
     }
 
     public void Screen_output(Student found){
