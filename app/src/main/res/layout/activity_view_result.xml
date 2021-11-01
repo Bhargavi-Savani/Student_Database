@@ -269,6 +269,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/textview_border"
                 android:textAlignment="center"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView

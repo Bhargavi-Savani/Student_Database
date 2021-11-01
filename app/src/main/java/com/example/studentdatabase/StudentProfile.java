@@ -44,8 +44,8 @@ public class StudentProfile extends AppCompatActivity {
         setContentView(R.layout.activity_student_profile);
 
         // FETCHING ALL THE ID OF ALL VIEWS
-        Student_Id = findViewById(R.id.Profile_Name);
-        Name = findViewById(R.id.Profile_Name);
+        Student_Id = findViewById(R.id.Profile_id);
+        Name = findViewById(R.id.Profile_full_name);
         Batch = findViewById(R.id.Profile_batch);
         Semester = findViewById(R.id.Profile_Sem);
         Programme = findViewById(R.id.Profile_programme);

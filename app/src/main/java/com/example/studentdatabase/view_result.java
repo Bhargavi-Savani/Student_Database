@@ -151,7 +151,7 @@ public class view_result extends AppCompatActivity {
 
         // DISPLAYING VALUES DEPENDING UPON THE SEMESTER SELECTED
 
-        if(Sem.equals("1st")){
+        if(Sem.equals("1")){
             final int size = found.getS1().getSubjects().size();        // GIVES THE SIZE OF THE OBJECT FETCHED FROM API
 
             // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
