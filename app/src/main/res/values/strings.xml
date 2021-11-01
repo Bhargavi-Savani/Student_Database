@@ -33,4 +33,10 @@
     <string name="ID">Student ID</string>
     <string name="Select">Select Year</string>
 
+    <string name="FirstYear">First Year Syllabus</string>
+    <string name="SecondYear">Second Year Syllabus</string>
+    <string name="ThirdYear">Third Year Syllabus</string>
+    <string name="FourthYear">Fourth Year Syllabus</string>
+
+
 </resources>
