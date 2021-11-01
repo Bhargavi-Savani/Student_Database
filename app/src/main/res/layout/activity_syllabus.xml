@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".Syllabus"
     tools:visibility="visible">
 
@@ -21,6 +22,7 @@
 
     <TextView
         android:id="@+id/textView52"
+        android:textColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="25dp"
@@ -37,12 +39,15 @@
 
     <TextView
         android:id="@+id/textView53"
+        android:textColor="@color/white"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="25dp"
         android:layout_marginTop="62dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="415dp"
+        android:autoLink="web"
+        android:linksClickable="true"
         android:textAlignment="center"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
     EditText Password;          //Variable to store id`s of view.
 
     Button SubmitButton;        //Variable to store id`s of view.
-    String UserRole = new String();     //Variable to Store the role(faculty/student) of the user
 
 
     @Override
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Intent RoleType = getIntent();
-        UserRole=RoleType.getStringExtra(Page1.Role);   // gets the role
+        GlobalClasss.Role=RoleType.getStringExtra(Page1.Role);   // gets the role
 
         UserId = findViewById(R.id.UserId);             //saving id of UserID text box.
         Password = findViewById(R.id.Password);         //saving id of password text box..
@@ -62,19 +61,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
     // Function checks the credentials entered by the user
     private void CredentialCheck(LoginDetails Credentials) throws IOException {
+        TextView Prompt= findViewById(R.id.sub1);
         Intent intent;
-        if(UserRole.equals("Faculty")){
+        InputStream row;
+
+        if(GlobalClasss.Role.equals("Faculty")){
             intent = new Intent(this,FirstPageTeachers.class); // an intent variable to transfer to next page of teachers
+            row = getResources().openRawResource(R.raw.teacher_login); // getting the faculty file from the system
         }
         else {
             intent = new Intent(this, Page3.class); // an intent variable to transfer to next page of students
+            row = getResources().openRawResource(R.raw.studentcredential); // getting the student file from the system
         }
-
         LoginDetails loginInput=new LoginDetails();
 
-        InputStream row = getResources().openRawResource(R.raw.encryption); // getting the file from the system
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 
@@ -98,15 +102,16 @@ public class MainActivity extends AppCompatActivity {
             {
                 Str1="Login Success full";
                 i=1;
+                Prompt.setText(Str1);
+                Password.setText(null);
+                startActivity(intent);// starts page3 activity
                 break;
             }
         }
         if(i==0)
             Str1="Login Failed";
 
-        TextView Prompt= findViewById(R.id.sub1);
         Prompt.setText(Str1);
-        startActivity(intent);     // starts page3 activity
     }
 
     private LoginDetails Encryption(String Id,String Password)
@@ -116,7 +121,13 @@ public class MainActivity extends AppCompatActivity {
         char[] psw=new char[Password.length()];
         int Key=0;
 
-        InputStream row = getResources().openRawResource(R.raw.key);
+        InputStream row;
+        if(GlobalClasss.Role.equals("Faculty")){
+            row = getResources().openRawResource(R.raw.teacher_key); // getting the file from the system
+        }
+        else {
+            row = getResources().openRawResource(R.raw.student_key); // getting the file from the system
+        }
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(row, StandardCharsets.UTF_8));
 

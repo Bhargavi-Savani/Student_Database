@@ -50,9 +50,10 @@ public class view_result extends AppCompatActivity {
         Sub_credit = new TextView[Size];
         Sub_grade = new TextView[Size];
 
+
         Intent intent = getIntent();
         Id = intent.getStringExtra(view_result_intermediate.Sender);
-        Sem = intent.getStringExtra(Result_home.Sem_Sender);
+        Sem = intent.getStringExtra(view_result_intermediate.INPUT_SEMESTER);
 
         Name = findViewById(R.id.student_name);
         ID = findViewById(R.id.id_value);
@@ -106,7 +107,7 @@ public class view_result extends AppCompatActivity {
         String IPAddress = "192.168.28.37";
         String URL = "http://"+ IPAddress + ":8080/api/student";
         Gson gson = new Gson();
-        String req="/" + "20CS075";
+        String req="/" + Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         @SuppressLint("SetTextI18n") JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
@@ -135,20 +136,27 @@ public class view_result extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     public void Result_Output(Student found){
+        int informer = 0;
         StudentDetails Profile_obj = new StudentDetails();
         Profile_obj.setId(found.getStudentId());
         Profile_obj.setName(found.getStudentName());
 
         Name.setText(Profile_obj.getName());
-        ID.setText(Id);
+        ID.setText(Profile_obj.getId());
 
-        if(Sem.equals("1")){
+        if(Sem.equals("1st")){
             final int size = found.getS1().getSubjects().size();
 
             for(int i = 0; i < size ; i++) {
                 Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode());
                 Sub_credit[i].setText(Double.toString(found.getS1().getSubjects().get(i).getCredit()));
                 Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade());
+            }
+
+            for (int i = 0; i < size; i++) {
+                if(found.getS1().getSubjects().get(i).getGradePoint() < 4){
+                    informer = 1;
+                }
             }
 
             double SGPA_Numerator = 0;
@@ -163,16 +171,29 @@ public class view_result extends AppCompatActivity {
             }
             double Sgpa = SGPA_Numerator / Credit_sum;
 
-
-            SGPA.setText(Double.toString(Math.round(Sgpa)));
+            if(informer == 0){
+                SGPA.setText(String.format("%.2f",Sgpa));
+                CGPA.setText(String.format("%.2f",Sgpa));
+                Earned_credit_sem.setText(Double.toString(Credit_sum));
+                Earned_credit.setText(Double.toString(Credit_sum));
+            }
+            else {
+                SGPA.setText("Fail");
+                CGPA.setText("Fail");
+                Earned_credit_sem.setText("-");
+                Earned_credit.setText("-");
+            }
             Total_Credit_sem.setText(Double.toString(Credit_sum));
-            CGPA.setText(Double.toString(Math.round(Sgpa)));
             Total_Credit.setText(Double.toString(Credit_sum));
 
         }
         else{
 
             final int size = found.getS2().getSubjects().size();
+            double SGPA_Numerator = 0;
+            double CGPA_Numerator = 0;
+            double Sgpa_Credit_sum = 0;
+            double Cgpa_Credit_sum = 0;
 
             for(int i = 0; i < size ; i++) {
                 Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode());
@@ -180,35 +201,58 @@ public class view_result extends AppCompatActivity {
                 Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade());
             }
 
-            double SGPA_Numerator = 0;
-            double CGPA_Numerator = 0;
-            double Credit_sum = 0;
+
+            for (int i = 0; i < size; i++) {
+                if(found.getS1().getSubjects().get(i).getGradePoint() < 4){
+                    informer = 1;
+                    break;
+                }
+                if(found.getS2().getSubjects().get(i).getGradePoint() < 4){
+                    informer = 1;
+                    break;
+                }
+            }
+
 
             for (int i = 0; i < size; i++) {
                 SGPA_Numerator += found.getS2().getSubjects().get(i).getCredit() *
                         found.getS2().getSubjects().get(i).getGradePoint();
 
-                Credit_sum += found.getS2().getSubjects().get(i).getCredit();
+                Sgpa_Credit_sum += found.getS2().getSubjects().get(i).getCredit();
             }
-            double Sgpa = SGPA_Numerator / Credit_sum;
+            double Sgpa = SGPA_Numerator / Sgpa_Credit_sum;
 
-            SGPA.setText(Double.toString(Sgpa));
+            Total_Credit_sem.setText(Double.toString(Sgpa_Credit_sum));
+
+            CGPA_Numerator += SGPA_Numerator;
+            Cgpa_Credit_sum += Sgpa_Credit_sum;
 
             for (int i = 0; i < size; i++) {
                 CGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
                         found.getS1().getSubjects().get(i).getGradePoint();
 
-                CGPA_Numerator += found.getS2().getSubjects().get(i).getCredit() *
-                        found.getS2().getSubjects().get(i).getGradePoint();
 
-                Credit_sum += found.getS1().getSubjects().get(i).getCredit();
+                Cgpa_Credit_sum += found.getS1().getSubjects().get(i).getCredit();
 
-                Credit_sum += found.getS2().getSubjects().get(i).getCredit();
             }
-            double Cgpa = CGPA_Numerator / Credit_sum;
+            double Cgpa = CGPA_Numerator / Cgpa_Credit_sum;
 
-            CGPA.setText(Double.toString(Cgpa));
+            if(informer == 0){
+                SGPA.setText(String.format("%.2f",Sgpa));
+                CGPA.setText(String.format("%.2f",Cgpa));
+                Earned_credit_sem.setText(Double.toString(Sgpa_Credit_sum));
+                Earned_credit.setText(Double.toString(Cgpa_Credit_sum));
+            }
+            else {
+                SGPA.setText("Fail");
+                CGPA.setText("Fail");
+                Earned_credit_sem.setText("-");
+                Earned_credit.setText("-");
+            }
+            Total_Credit.setText(Double.toString(Cgpa_Credit_sum));
+            Cumulative.setText("-");
         }
+        Cumulative.setText("-");
         Semester.setText(Sem);
     }
 }
