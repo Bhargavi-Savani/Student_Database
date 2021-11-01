@@ -1,6 +1,5 @@
 package com.example.studentdatabase;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -44,12 +43,13 @@ public class StudentProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
 
-        Student_Id = findViewById(R.id.grade3);
-        Name = findViewById(R.id.sub4);
-        Batch = findViewById(R.id.textView14);
-        Semester = findViewById(R.id.grade4);
-        Programme = findViewById(R.id.sub5);
-        College = findViewById(R.id.credit5);
+        // FETCHING ALL THE ID OF ALL VIEWS
+        Student_Id = findViewById(R.id.Profile_Name);
+        Name = findViewById(R.id.Profile_Name);
+        Batch = findViewById(R.id.Profile_batch);
+        Semester = findViewById(R.id.Profile_Sem);
+        Programme = findViewById(R.id.Profile_programme);
+        College = findViewById(R.id.Profile_college);
 
 //    TODO 1. Api call and convert it into object
         /**
@@ -90,13 +90,15 @@ public class StudentProfile extends AppCompatActivity {
         requestQueue.add(objectRequest);
     }
 
+    // DISPLAYS ALL THE VALUE FETCHED
     public void Screen_output(Student found){
 
-        StudentDetails Profile_obj = new StudentDetails();
+        StudentDetails Profile_obj = new StudentDetails();      // VARIABLE TO DISPLAY ALL THE VALUES
 
         Profile_obj.setId(found.getStudentId());
         Profile_obj.setName(found.getStudentName());
 
+        // SETTING ALL THE VALUE ON DISPLAY
         Student_Id.setText(Profile_obj.getId());
         Name.setText(Profile_obj.getName());
         Batch.setText(Profile_obj.getBatch());

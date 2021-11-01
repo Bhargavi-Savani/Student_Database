@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black">
@@ -121,7 +120,7 @@
         app:layout_constraintVertical_bias="0.071" />
 
     <TextView
-        android:id="@+id/grade3"
+        android:id="@+id/Profile_Name"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="200dp"
@@ -136,7 +135,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/sub4"
+        android:id="@+id/Profile_full_name"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="270dp"
@@ -151,7 +150,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textView14"
+        android:id="@+id/Profile_batch"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="340dp"
@@ -166,7 +165,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/grade4"
+        android:id="@+id/Profile_Sem"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="410dp"
@@ -181,7 +180,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/sub5"
+        android:id="@+id/Profile_programme"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="480dp"
@@ -196,7 +195,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/credit5"
+        android:id="@+id/Profile_college"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginTop="550dp"

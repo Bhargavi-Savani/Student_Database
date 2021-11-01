@@ -1,7 +1,5 @@
 package com.example.studentdatabase;
 
-import static java.lang.Math.round;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,13 +46,16 @@ public class Result extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        // CREATING ARRAY OF TEXTVIEW TO FETCH ID
         Sub = new TextView[Size];
         Sub_credit = new TextView[Size];
         Sub_grade = new TextView[Size];
 
+        // FETCHING VALUE FROM PAGE3 PAGE
         Intent intent = getIntent();
         Sem = intent.getStringExtra(Result_home.Sem_Sender);
 
+        // FETCHING ID OFF ALL THE VIEWS
         Name = findViewById(R.id.student_name);
         ID = findViewById(R.id.id_value);
 
@@ -122,7 +123,7 @@ public class Result extends AppCompatActivity {
 
                     System.out.println("FOUND IN RESPONSE:\n\n\n " + found);
 
-                    Result_Output(found);
+                    S_Result_Output(found);
 
                 },
                 error -> {
@@ -135,10 +136,12 @@ public class Result extends AppCompatActivity {
 //     TODO 2.
     }
 
+    // DISPLAY FUNCTION
     @SuppressLint("SetTextI18n")
-    public void Result_Output(Student found){
+    public void S_Result_Output(Student found){
 
-        int informer = 0;
+        int informer = 0;       // VALUE = 0 IF PASS AND VALUE = 1 IF FAIL
+
         StudentDetails Profile_obj = new StudentDetails();
         Profile_obj.setId(found.getStudentId());
         Profile_obj.setName(found.getStudentName());
@@ -146,15 +149,18 @@ public class Result extends AppCompatActivity {
         Name.setText(Profile_obj.getName());
         ID.setText(Profile_obj.getId());
 
+        // DISPLAYING VALUES DEPENDING UPON THE SEMESTER SELECTED
         if(Sem.equals("1")){
             final int size = found.getS1().getSubjects().size();
 
+            // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
                 Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode());
                 Sub_credit[i].setText(Double.toString(found.getS1().getSubjects().get(i).getCredit()));
                 Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade());
             }
 
+            // CHECKS IF STUDENT IS FAILED IN ANY SUBJECT
             for (int i = 0; i < size; i++) {
                 if(found.getS1().getSubjects().get(i).getGradePoint() < 4){
                     informer = 1;
@@ -164,17 +170,19 @@ public class Result extends AppCompatActivity {
             double SGPA_Numerator = 0;
             double Credit_sum = 0;
 
-
+            // LOOP TO CALCULATE SGPA
             for (int i = 0; i < size; i++) {
                 SGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
                         found.getS1().getSubjects().get(i).getGradePoint();
 
                 Credit_sum += found.getS1().getSubjects().get(i).getCredit();
             }
+
             double Sgpa = SGPA_Numerator / Credit_sum;
 
+            // CHECKS IF THE STUDENT IS PASS OR FAILED AND DISPLAYS THE OUTPUT ACCORDINGLY
             if(informer == 0){
-                SGPA.setText(String.format("%.2f",Sgpa));
+                SGPA.setText(String.format("%.2f",Sgpa)); // DISPLAYS OUTPUT UP TO TWO DECIMAL VALUE
                 CGPA.setText(String.format("%.2f",Sgpa));
                 Earned_credit_sem.setText(Double.toString(Credit_sum));
                 Earned_credit.setText(Double.toString(Credit_sum));
@@ -197,13 +205,14 @@ public class Result extends AppCompatActivity {
             double Sgpa_Credit_sum = 0;
             double Cgpa_Credit_sum = 0;
 
+            // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
                 Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode());
                 Sub_credit[i].setText(Double.toString(found.getS2().getSubjects().get(i).getCredit()));
                 Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade());
             }
 
-
+            // CHECKS IF STUDENT IS FAIL IN ANY SUBJECT IN BOTH SEMESTER
             for (int i = 0; i < size; i++) {
                 if(found.getS1().getSubjects().get(i).getGradePoint() < 4){
                     informer = 1;
@@ -215,13 +224,14 @@ public class Result extends AppCompatActivity {
                 }
             }
 
-
+            // CALCULATE CURRENT SEMESTER SGPA
             for (int i = 0; i < size; i++) {
                 SGPA_Numerator += found.getS2().getSubjects().get(i).getCredit() *
                         found.getS2().getSubjects().get(i).getGradePoint();
 
                 Sgpa_Credit_sum += found.getS2().getSubjects().get(i).getCredit();
             }
+
             double Sgpa = SGPA_Numerator / Sgpa_Credit_sum;
 
             Total_Credit_sem.setText(Double.toString(Sgpa_Credit_sum));
@@ -229,6 +239,7 @@ public class Result extends AppCompatActivity {
             CGPA_Numerator += SGPA_Numerator;
             Cgpa_Credit_sum += Sgpa_Credit_sum;
 
+            // CALCULATES CGPA
             for (int i = 0; i < size; i++) {
                 CGPA_Numerator += found.getS1().getSubjects().get(i).getCredit() *
                         found.getS1().getSubjects().get(i).getGradePoint();
@@ -237,8 +248,10 @@ public class Result extends AppCompatActivity {
                 Cgpa_Credit_sum += found.getS1().getSubjects().get(i).getCredit();
 
             }
+
             double Cgpa = CGPA_Numerator / Cgpa_Credit_sum;
 
+            // DISPLAYS GRADE, SGPA AND CGPA DEPENDING UPON INFORMER VALUE
             if(informer == 0){
                 SGPA.setText(String.format("%.2f",Sgpa));
                 CGPA.setText(String.format("%.2f",Cgpa));

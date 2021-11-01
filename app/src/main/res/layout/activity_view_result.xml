@@ -28,7 +28,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/course_name"
+                android:id="@+id/t_course_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -39,7 +39,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit_value"
+                android:id="@+id/t_credit_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -50,7 +50,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade_value"
+                android:id="@+id/t_grade_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -68,7 +68,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub1"
+                android:id="@+id/t_sub1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -78,7 +78,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit1"
+                android:id="@+id/t_credit1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -88,7 +88,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade1"
+                android:id="@+id/t_grade1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -105,7 +105,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub2"
+                android:id="@+id/t_sub2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -115,7 +115,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit2"
+                android:id="@+id/t_credit2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -125,7 +125,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade2"
+                android:id="@+id/t_grade2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -142,7 +142,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub3"
+                android:id="@+id/t_sub3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -152,7 +152,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit3"
+                android:id="@+id/t_credit3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -162,7 +162,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade3"
+                android:id="@+id/t_grade3"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -179,7 +179,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub4"
+                android:id="@+id/t_sub4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -189,7 +189,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit4"
+                android:id="@+id/t_credit4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -199,7 +199,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade4"
+                android:id="@+id/t_grade4"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -216,7 +216,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub5"
+                android:id="@+id/t_sub5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -226,7 +226,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit5"
+                android:id="@+id/t_credit5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -236,7 +236,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade5"
+                android:id="@+id/t_grade5"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -253,7 +253,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub6"
+                android:id="@+id/t_sub6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -263,7 +263,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit6"
+                android:id="@+id/t_credit6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -272,7 +272,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade6"
+                android:id="@+id/t_grade6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -289,7 +289,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub7"
+                android:id="@+id/t_sub7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -299,7 +299,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit7"
+                android:id="@+id/t_credit7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -309,7 +309,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade7"
+                android:id="@+id/t_grade7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -326,7 +326,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sub8"
+                android:id="@+id/t_sub8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -336,7 +336,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/credit8"
+                android:id="@+id/t_credit8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -346,44 +346,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/grade8"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/textview_border"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/sub9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:background="@drawable/textview_border"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/credit9"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/textview_border"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/grade9"
+                android:id="@+id/t_grade8"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -415,7 +378,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sem"
+                android:id="@+id/t_sem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -427,7 +390,7 @@
                 android:visibility="visible" />
 
             <TextView
-                android:id="@+id/sem_credit"
+                android:id="@+id/t_sem_credit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -438,7 +401,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/sem_earned"
+                android:id="@+id/t_sem_earned"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -449,7 +412,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/sgpa"
+                android:id="@+id/t_sgpa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -467,7 +430,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/sem_value"
+                android:id="@+id/t_sem_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -477,7 +440,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/sem_credit_value"
+                android:id="@+id/t_sem_credit_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -487,7 +450,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/sem_earned_value"
+                android:id="@+id/t_sem_earned_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -497,7 +460,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/sgpa_value"
+                android:id="@+id/t_sgpa_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -514,7 +477,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/cumalative"
+                android:id="@+id/t_cumalative"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -525,7 +488,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/toatal_credit"
+                android:id="@+id/t_total_credit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -536,7 +499,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/earned_credit"
+                android:id="@+id/t_earned_credit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -547,7 +510,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cgpa"
+                android:id="@+id/t_Cgpa"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -565,7 +528,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/cumalative_value"
+                android:id="@+id/t_cumalative_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -575,7 +538,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/total_credit_value"
+                android:id="@+id/t_total_credit_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -585,7 +548,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/earned_credit_value"
+                android:id="@+id/t_earned_credit_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -595,7 +558,7 @@
                 android:textSize="20sp" />
 
             <TextView
-                android:id="@+id/Cgpa_value"
+                android:id="@+id/t_Cgpa_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -626,7 +589,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/name"
+                android:id="@+id/t_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -637,7 +600,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/student_name"
+                android:id="@+id/t_student_name"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -654,7 +617,7 @@
             android:layout_weight="1">
 
             <TextView
-                android:id="@+id/id"
+                android:id="@+id/t_id"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -665,7 +628,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/id_value"
+                android:id="@+id/t_id_value"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
