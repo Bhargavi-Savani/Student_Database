@@ -29,21 +29,21 @@ public class Student implements Cloneable {
         ArrayList<Subject> sub2 = new ArrayList<>();
 
         sub1.add(new Subject("CE143","Computer Concepts & Programming (TH)"));
-        sub1.add(new Subject("CE143","Computer Concepts & Programming (PR)"));
+        sub1.add(new Subject("CE143(P)","Computer Concepts & Programming (PR)"));
         sub1.add(new Subject("EE145","Basics of Electronics & Electrical Engineering (TH)"));
-        sub1.add(new Subject("EE145","Basics of Electronics & Electrical Engineering (PR)"));
+        sub1.add(new Subject("EE145(P)","Basics of Electronics & Electrical Engineering (PR)"));
         sub1.add(new Subject("HS101.02A","Communicative English (PR)"));
         sub1.add(new Subject("IT144","ICT Workshop (PR)"));
         sub1.add(new Subject("MA143","Engineering Mathematics-I (TH)"));
         sub1.add(new Subject("PY142","Engineering Physics - I (PR)"));
 
         sub2.add(new Subject("CE144","Object Oriented Programming with C++ (TH)"));
-        sub2.add(new Subject("CE144","Object Oriented Programming with C++ (PR)"));
+        sub2.add(new Subject("CE144(P)","Object Oriented Programming with C++ (PR)"));
         sub2.add(new Subject("CL144.02A","Environmental Sciences (PR)"));
         sub2.add(new Subject("HS202","Liberal Arts (PR)"));
         sub2.add(new Subject("MA144","Engineering Mathematics-II (TH)"));
         sub2.add(new Subject("ME145","Elements of Engineering (TH)"));
-        sub2.add(new Subject("ME145","Elements of Engineering (PR)"));
+        sub2.add(new Subject("ME145(P)","Elements of Engineering (PR)"));
         sub2.add(new Subject("PY143","Engineering Physics - II"));
 
         s1 = new Semester(1, sub1);

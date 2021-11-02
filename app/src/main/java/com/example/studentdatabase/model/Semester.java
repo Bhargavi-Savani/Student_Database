@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Semester {
     int sem;
     ArrayList<Subject> subjects;
+    public Semester() {
+    }
 
     public Semester(int sem, ArrayList<Subject> subjects) {
         this.sem = sem;

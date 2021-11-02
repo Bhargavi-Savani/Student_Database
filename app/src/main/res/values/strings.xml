@@ -38,5 +38,7 @@
     <string name="ThirdYear">Third Year Syllabus</string>
     <string name="FourthYear">Fourth Year Syllabus</string>
 
+    <string name="HINTforADD">value</string>
+
 
 </resources>

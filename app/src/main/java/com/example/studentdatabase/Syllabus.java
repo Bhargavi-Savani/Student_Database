@@ -44,6 +44,7 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
     // OVERRIDING DROPDOWN METHOD
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
         if(adapterView.getId() ==  R.id.dropdown_menu){
             String Semester = adapterView.getItemAtPosition(i).toString();  // FETCHING THE SELECTED SEMESTER VALUE
 
