@@ -56,13 +56,12 @@ public class StudentProfile extends AppCompatActivity {
          * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
          * Run 'ipconfig' at cmd to find it.
          */
-        String IPAddress = "192.168.28.37";
-        String IPAddress1 = "192.168.0.193";
-        String URL = "http://"+ IPAddress + ":8080/api/student";
+        String IPAddress1 = "192.168.1.193";
+        String URL = "http://"+ IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + GlobalClasss.Student_Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        JsonObjectRequest objectRequest = new JsonObjectRequest(
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL + req,
                 null,
@@ -87,7 +86,8 @@ public class StudentProfile extends AppCompatActivity {
                     }
                 }
         );
-        requestQueue.add(objectRequest);
+//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy( 50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(jsonObjectRequest);
     }
 
     // DISPLAYS ALL THE VALUE FETCHED

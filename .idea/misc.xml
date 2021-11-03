@@ -3,9 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/drawable/spinner_border.xml" value="0.21574074074074073" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/drawable/textview_border.xml" value="0.21574074074074073" />
-        <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_add_student.xml" value="0.25" />
+        <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_add_student.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_add_student_intermediate.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_delete_student.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_first_page_teachers.xml" value="0.25416666666666665" />
@@ -13,7 +12,6 @@
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_modify_student.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_modify_student_intermediate.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_page1.xml" value="0.264" />
-        <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_page3.xml" value="0.1" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_result.xml" value="0.25" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_result_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_student_profile.xml" value="0.25416666666666665" />
@@ -22,6 +20,7 @@
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/activity_view_result_intermediate.xml" value="0.2462962962962963" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Akshay/AndroidStudioProjects/StudentDatabase/app/src/main/res/layout/textview_border.xml" value="0.1" />
+        <entry key="..\:/Users/Ari/Documents/GitHub/Student_Database/app/src/main/res/layout/activity_modify_student_intermediate.xml" value="0.1" />
       </map>
     </option>
   </component>

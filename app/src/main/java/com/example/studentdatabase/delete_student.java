@@ -7,6 +7,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.android.material.snackbar.Snackbar;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
+
 public class delete_student extends AppCompatActivity {
 
     EditText d_id;
@@ -26,7 +37,41 @@ public class delete_student extends AppCompatActivity {
         String ID = d_id.getText().toString();
 
         // TODO
-
+        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+        String req="/" + ID;
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.DELETE,
+                URL + req,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(@NotNull JSONObject response) {
+                        // Api call succeeded
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Api call failed
+                        error.printStackTrace();
+                        try {
+                            @NotNull int statusCode = error.networkResponse.statusCode;
+                            // Show the error to the user
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    "Error Code: " + statusCode + ": NO STUDENT FOUND",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                        catch(NullPointerException e){
+                            e.printStackTrace();
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    ID + " has been deleted from DATABASE.",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
+        requestQueue.add(jsonObjectRequest);
         // ADD CODE B/W THIS TWO COMMENTS
 
         display_view.setText("Student Profile deleted");

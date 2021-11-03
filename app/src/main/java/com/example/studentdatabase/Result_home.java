@@ -23,7 +23,7 @@ public class Result_home extends AppCompatActivity {
         sem1_intent.putExtra(Sem_Sender,sem);
         startActivity(sem1_intent);
     }
-    // FUNCTION OF SEMESTER 1 BUTTON
+    // FUNCTION OF SEMESTER 2 BUTTON
     public void sem2_result(View view){
         String sem = "2";
         Intent sem1_intent = new Intent(this,Result.class);

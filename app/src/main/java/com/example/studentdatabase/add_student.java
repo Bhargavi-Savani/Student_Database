@@ -2,18 +2,35 @@ package com.example.studentdatabase;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.studentdatabase.model.Semester;
 import com.example.studentdatabase.model.Student;
 import com.example.studentdatabase.model.Subject;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+
+import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class add_student extends AppCompatActivity {
 
@@ -27,6 +44,10 @@ public class add_student extends AppCompatActivity {
     TextView[] SubjectCode;
     EditText[] SubjectCredit;
     EditText[] SubjectGrade;
+
+
+    //Change IPAddress in GlobalClasss if not same
+    String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +96,8 @@ public class add_student extends AppCompatActivity {
 
 
         student = new Student();
+        student.setStudentId(ID);
+        student.setStudentName(StudentName);
 
         System.out.println(student);
 
@@ -88,37 +111,195 @@ public class add_student extends AppCompatActivity {
                 SubjectCode[i].setText(student.getS2().getSubjects().get(i).getSubCode());
             }
         }
-
     }
 
     public void Get_Input(View view){
-        Semester semester = new Semester();
-        Subject[] subject = new Subject[8];
-
-for(int i =0; i < Size; i++)
-{
-     subject[i] = new Subject();
-}
-
-        for (int i = 0; i < Size; i++) {
-            subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
-            subject[i].setGrade(SubjectGrade[i].getText().toString());
-            subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString()).toString()));
-        }
-
-        ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
-        semester.setSubjects(var);
 
         if(Semester.equals("1")) {
+            Semester semester = new Semester();
+            ArrayList<Subject> AL = student.getS1().getSubjects();
+            Subject[] subject = new Subject[AL.size()];
+            subject = AL.toArray(subject);
+
+            /*for(int i =0; i < Size; i++)
+            {
+                 subject[i] = new Subject();
+            }*/
+
+            for (int i = 0; i < Size; i++) {
+                subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
+                subject[i].setGrade(SubjectGrade[i].getText().toString());
+                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString()).toString()));
+            }
+
+            ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
+            semester.setSubjects(var);
+
             semester.setSem(Integer.parseInt(Semester));
             student.setS1(semester);
-
             // TODO api call to send sem1 object
+            callPostWith(student);
         }
         else {
-            // TODO do api call for sem1 object and then add the sem2 data fetched to you called object and send it back to api
+            // TODO do api call for sem1 object and then add the sem2 data
+            //  fetched to your called object and send it back to api
+
+            Semester semester = new Semester();
+            ArrayList<Subject> AL = student.getS2().getSubjects();
+            Subject[] subject = new Subject[AL.size()];
+            subject = AL.toArray(subject);
+
+            /*for(int i =0; i < Size; i++)
+            {
+                 subject[i] = new Subject();
+            }*/
+
+            for (int i = 0; i < Size; i++) {
+                subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
+                subject[i].setGrade(SubjectGrade[i].getText().toString());
+                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString()).toString()));
+            }
+
+            ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
+            semester.setSubjects(var);
+
+            Gson gson = new Gson();
+            String req="/" + ID;
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                    Request.Method.GET,
+                    URL + req,
+                    null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.e("GET Response ",response.toString());
+                            String res = response.toString();
+                            Student found = gson.fromJson(res, Student.class);
+                            semester.setSem(Integer.parseInt(Semester));
+                            found.setS2(semester);
+                            callPutWith(found);
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.e("GET Error Response ",error.toString());
+                        }
+                    }
+            );
+            requestQueue.add(jsonObjectRequest);
         }
 
+    }
+
+    void callPostWith(Student postStudent){
+        Gson gson = new Gson();
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(gson.toJson(postStudent));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String req="/";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        // Build the request
+        final JsonObjectRequest jsonObjectRequest
+                = new JsonObjectRequest(
+                Request.Method.POST,
+                URL + req,
+                jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(@NotNull JSONObject response) {
+                        // Api call succeeded
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Api call failed
+                        error.printStackTrace();
+                        try {
+                            @NotNull int statusCode = error.networkResponse.statusCode;
+                            // Show the error to the user
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    "Error Code: " + statusCode + ": NO STUDENT FOUND",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                        catch(NullPointerException e){
+                            e.printStackTrace();
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    ID + " has been Added to DATABASE.",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+        }) {
+            @NonNull
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                // Build the headers
+                final Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+        };
+        // Make the request
+        requestQueue.add(jsonObjectRequest);
+    }
+    void callPutWith(Student putStudent){
+        Gson gson = new Gson();
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(gson.toJson(putStudent));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        String req="/";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        // Build the request
+        final JsonObjectRequest jsonObjectRequest
+                = new JsonObjectRequest(
+                Request.Method.PUT,
+                URL + req,
+                jsonObject,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(@NotNull JSONObject response) {
+                        // Api call succeeded
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // Api call failed
+                        error.printStackTrace();
+                        try {
+                            @NotNull int statusCode = error.networkResponse.statusCode;
+                            // Show the error to the user
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    "Error Code: " + statusCode + ": NO STUDENT FOUND",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                        catch(NullPointerException e){
+                            e.printStackTrace();
+                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                    ID + " has been Added to DATABASE.",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+        }) {
+            @NonNull
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                // Build the headers
+                final Map<String, String> params = new HashMap<>();
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+        };
+        // Make the request
+        requestQueue.add(jsonObjectRequest);
     }
 
     enum GradePoints {

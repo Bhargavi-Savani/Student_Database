@@ -36,7 +36,7 @@ public class add_student_intermediate extends AppCompatActivity {
         // SENDING DATA AND STARTING NEW ACTIVITY
         intent.putExtra(AD_ID_SENDER,ad_id.getText().toString());
         intent.putExtra(AD_NAME_SENDER,ad_name.getText().toString());
-        intent.putExtra(AD_NAME_SENDER,ad_sem.getText().toString());
+        intent.putExtra(AD_SEM_SENDER,ad_sem.getText().toString());
         startActivity(intent);
     }
 }

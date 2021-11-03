@@ -105,9 +105,9 @@ public class Result extends AppCompatActivity {
          * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
          * Run 'ipconfig' at cmd to find it.
          */
-        String IPAddress = "192.168.28.37";
-        String IPAddress1 = "192.168.0.193";
-        String URL = "http://"+ IPAddress + ":8080/api/student";
+        //Change IPAddress in GlobalClasss if not same
+
+        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + GlobalClasss.Student_Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);

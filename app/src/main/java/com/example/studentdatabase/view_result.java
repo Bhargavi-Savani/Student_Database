@@ -103,11 +103,10 @@ public class view_result extends AppCompatActivity {
 
 //        TODO 2 Create Object and API call
         /**
-         * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
-         * Run 'ipconfig' at cmd to find it.
+         * Remove that 1 for your IPAddress
+         * In case, it is changed for your lap, change it to
          */
-        String IPAddress = "192.168.28.37";
-        String URL = "http://"+ IPAddress + ":8080/api/student";
+        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
