@@ -31,8 +31,8 @@ public class modify_student_intermediate extends AppCompatActivity {
         Intent intent = new Intent(this,modify_student.class);
 
         // SENDING DATA AND STARTING NEW ACTIVITY
-        intent.putExtra(msd_id,msd_student_id.getText());
-        intent.putExtra(msd_sem,msd_semester.getText());
+        intent.putExtra(msd_id,msd_student_id.getText().toString());
+        intent.putExtra(msd_sem,msd_semester.getText().toString());
         startActivity(intent);
     }
 }
