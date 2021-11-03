@@ -69,9 +69,9 @@ public class add_student extends AppCompatActivity {
         SubjectGrade[7] = findViewById(R.id.AD_GRADE8);
 
         Intent intent = getIntent();
-        ID = intent.getStringExtra(add_student_intermediate.AD_NAME_SENDER);
-        Semester = intent.getStringExtra(add_student_intermediate.AD_ID_SENDER);
-        StudentName = intent.getStringExtra(add_student_intermediate.AD_SEM_SENDER);
+        StudentName = intent.getStringExtra(add_student_intermediate.AD_NAME_SENDER);
+        ID = intent.getStringExtra(add_student_intermediate.AD_ID_SENDER);
+        Semester = intent.getStringExtra(add_student_intermediate.AD_SEM_SENDER);
 
 
         student = new Student();
