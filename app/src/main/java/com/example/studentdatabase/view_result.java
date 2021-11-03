@@ -155,7 +155,7 @@ public class view_result extends AppCompatActivity {
 
             // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
-                Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode());
+                Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode().toUpperCase());
                 Sub_credit[i].setText(Double.toString(found.getS1().getSubjects().get(i).getCredit()));
                 Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade());
             }
@@ -208,7 +208,7 @@ public class view_result extends AppCompatActivity {
 
             // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
-                Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode());
+                Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode().toUpperCase());
                 Sub_credit[i].setText(Double.toString(found.getS2().getSubjects().get(i).getCredit()));
                 Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade());
             }

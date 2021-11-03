@@ -155,9 +155,9 @@ public class Result extends AppCompatActivity {
 
             // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
-                Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode());
+                Sub[i].setText(found.getS1().getSubjects().get(i).getSubCode().toUpperCase());
                 Sub_credit[i].setText(Double.toString(found.getS1().getSubjects().get(i).getCredit()));
-                Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade());
+                Sub_grade[i].setText(found.getS1().getSubjects().get(i).getGrade().toUpperCase());
             }
 
             // CHECKS IF STUDENT IS FAILED IN ANY SUBJECT
@@ -207,9 +207,9 @@ public class Result extends AppCompatActivity {
 
             // LOOP TO DISPLAY ALL THE VALUES ON SCREEN
             for(int i = 0; i < size ; i++) {
-                Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode());
+                Sub[i].setText(found.getS2().getSubjects().get(i).getSubCode().toUpperCase());
                 Sub_credit[i].setText(Double.toString(found.getS2().getSubjects().get(i).getCredit()));
-                Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade());
+                Sub_grade[i].setText(found.getS2().getSubjects().get(i).getGrade().toUpperCase());
             }
 
             // CHECKS IF STUDENT IS FAIL IN ANY SUBJECT IN BOTH SEMESTER

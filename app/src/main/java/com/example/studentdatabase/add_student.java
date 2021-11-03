@@ -103,12 +103,12 @@ public class add_student extends AppCompatActivity {
 
         if(Semester.equals("1")){
             for (int i = 0; i < Size; i++) {
-                SubjectCode[i].setText(student.getS1().getSubjects().get(i).getSubCode());
+                SubjectCode[i].setText(student.getS1().getSubjects().get(i).getSubCode().toUpperCase());
             }
         }
         else {
             for (int i = 0; i < Size; i++) {
-                SubjectCode[i].setText(student.getS2().getSubjects().get(i).getSubCode());
+                SubjectCode[i].setText(student.getS2().getSubjects().get(i).getSubCode().toUpperCase());
             }
         }
     }
@@ -128,8 +128,8 @@ public class add_student extends AppCompatActivity {
 
             for (int i = 0; i < Size; i++) {
                 subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
-                subject[i].setGrade(SubjectGrade[i].getText().toString());
-                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString()).toString()));
+                subject[i].setGrade(SubjectGrade[i].getText().toString().toUpperCase());
+                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString().toUpperCase()).toString()));
             }
 
             ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
@@ -156,8 +156,8 @@ public class add_student extends AppCompatActivity {
 
             for (int i = 0; i < Size; i++) {
                 subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
-                subject[i].setGrade(SubjectGrade[i].getText().toString());
-                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString()).toString()));
+                subject[i].setGrade(SubjectGrade[i].getText().toString().toUpperCase());
+                subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString().toUpperCase()).toString()));
             }
 
             ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
@@ -315,7 +315,7 @@ public class add_student extends AppCompatActivity {
         }
 
         public int getint(String str){
-            num = GradePoints.valueOf(str).ordinal();
+            num = GradePoints.valueOf(str.toUpperCase()).ordinal();
             return num;
         }
     }
