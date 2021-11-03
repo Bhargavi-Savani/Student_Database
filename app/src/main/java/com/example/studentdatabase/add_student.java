@@ -95,6 +95,11 @@ public class add_student extends AppCompatActivity {
         Semester semester = new Semester();
         Subject[] subject = new Subject[8];
 
+for(int i =0; i < Size; i++)
+{
+     subject[i] = new Subject();
+}
+
         for (int i = 0; i < Size; i++) {
             subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
             subject[i].setGrade(SubjectGrade[i].getText().toString());
