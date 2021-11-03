@@ -50,6 +50,11 @@ public class modify_student extends AppCompatActivity {
         Semester semester = new Semester();
         Student student = new Student();
 
+for(int i =0; i < Size; i++)
+{
+     subject[i] = new Subject();
+}
+
         for (int i = 0; i < Size; i++) {
             subject[i].setSubCode(CourseCodeValue[i].getText().toString());
             subject[i].setGrade(CourseGradeValue[i].getText().toString());
