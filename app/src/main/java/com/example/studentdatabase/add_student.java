@@ -41,13 +41,12 @@ public class add_student extends AppCompatActivity {
     String Semester;
     String StudentName;
     Student student;
+
     TextView[] SubjectCode;
     EditText[] SubjectCredit;
     EditText[] SubjectGrade;
 
-
-    //Change IPAddress in GlobalClasss if not same
-    String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+    String URL = GlobalClasss.URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -176,16 +175,6 @@ public class add_student extends AppCompatActivity {
             );
             requestQueue.add(jsonObjectRequest);
         }
-
-        Intent intent = new Intent(this,FirstPageTeachers.class);
-        TextView Prompt = findViewById(R.id.confirmation_message);
-        Prompt.setText("Student Data added successfully");
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        startActivity(intent);
     }
 
     void callPostWith(Student postStudent){

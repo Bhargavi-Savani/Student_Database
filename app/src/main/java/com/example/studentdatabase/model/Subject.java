@@ -7,8 +7,7 @@ public class Subject {
     String grade;
     int gradePoint;
 
-    public Subject() {
-    }
+    public Subject() {}
 
     public Subject(String subCode, String subName) {
         this.subCode = subCode;

@@ -98,10 +98,11 @@ public class Result extends AppCompatActivity {
         CGPA = findViewById(R.id.Cgpa_value);
 
 
-        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+        String URL = GlobalClasss.URL;
         Gson gson = new Gson();
         String req="/" + GlobalClasss.Student_Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //Building GET Request
         @SuppressLint("SetTextI18n") JsonObjectRequest objectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 URL + req,
@@ -123,6 +124,7 @@ public class Result extends AppCompatActivity {
                     System.out.println(res);
                 }
         );
+        //Make the request
         requestQueue.add(objectRequest);
     }
 

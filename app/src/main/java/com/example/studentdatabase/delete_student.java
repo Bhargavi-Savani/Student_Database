@@ -1,6 +1,5 @@
 package com.example.studentdatabase;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -37,51 +36,43 @@ public class delete_student extends AppCompatActivity {
 
         String ID = d_id.getText().toString();
 
-        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+        String URL = GlobalClasss.URL;
         String req="/" + ID;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
+        //Build a request
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
-                Request.Method.DELETE,
-                URL + req,
-                null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(@NotNull JSONObject response) {
-                        // Api call succeeded
+            Request.Method.DELETE,
+            URL + req,
+            null,
+            new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(@NotNull JSONObject response) {
+                    // Api call succeeded
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // Api call failed
+                    error.printStackTrace();
+                    try {
+                        @NotNull int statusCode = error.networkResponse.statusCode;
+                        // Show the error to the user
+                        Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                "Error Code: " + statusCode + ": NO STUDENT FOUND",
+                                Snackbar.LENGTH_SHORT).show();
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        // Api call failed
-                        error.printStackTrace();
-                        try {
-                            @NotNull int statusCode = error.networkResponse.statusCode;
-                            // Show the error to the user
-                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
-                                    "Error Code: " + statusCode + ": NO STUDENT FOUND",
-                                    Snackbar.LENGTH_SHORT).show();
-                        }
-                        catch(NullPointerException e){
-                            e.printStackTrace();
-                            Snackbar.make(findViewById(android.R.id.content).getRootView(),
-                                    ID + " has been deleted from DATABASE.",
-                                    Snackbar.LENGTH_SHORT).show();
-                        }
+                    catch(NullPointerException e){
+                        e.printStackTrace();
+                        Snackbar.make(findViewById(android.R.id.content).getRootView(),
+                                ID + " has been deleted from DATABASE.",
+                                Snackbar.LENGTH_SHORT).show();
                     }
                 }
+            }
         );
+       //Make request
         requestQueue.add(jsonObjectRequest);
-
-        display_view.setText("Student Profile deleted");
-        Intent intent = new Intent(this,FirstPageTeachers.class);
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        startActivity(intent);
     }
 
 }

@@ -51,7 +51,6 @@ public class Student implements Cloneable {
     }
 
     public Student(String studentId, String studentName, Semester s1, Semester s2) {
-
         this.studentId = studentId;
         this.studentName = studentName;
         this.s1 = s1;

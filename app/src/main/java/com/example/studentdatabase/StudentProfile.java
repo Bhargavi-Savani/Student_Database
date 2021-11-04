@@ -40,9 +40,7 @@ public class StudentProfile extends AppCompatActivity {
         Programme = findViewById(R.id.Profile_programme);
         College = findViewById(R.id.Profile_college);
 
-
-        String IPAddress1 = "192.168.1.193";
-        String URL = "http://"+ IPAddress1 + ":8080/api/student";
+        String URL = GlobalClasss.URL;
         Gson gson = new Gson();
         String req="/" + GlobalClasss.Student_Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);

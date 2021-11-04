@@ -43,7 +43,7 @@ public class modify_student extends AppCompatActivity {
     String[] courseGrades;
     int[] courseGradePoints;
 
-    String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+    String URL = GlobalClasss.URL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,8 +96,6 @@ public class modify_student extends AppCompatActivity {
                         String res = response.toString();
                         Student found = gson.fromJson(res, Student.class);
                         modifyObject(found);
-//                        semester.setSem(Integer.parseInt(Sem));
-//                        found.setS2(semester);
                         callPutWith(found);
                     }
                 },
@@ -117,7 +115,6 @@ public class modify_student extends AppCompatActivity {
             ArrayList<Subject> AL = semester.getSubjects();
             Subject[] subject = new Subject[AL.size()];
             subject = AL.toArray(subject);
-
 
             for (int i = 0; i < Size; i++) {
                 for(int j = 0; j < subject.length; j++ ){
@@ -139,8 +136,6 @@ public class modify_student extends AppCompatActivity {
             ArrayList<Subject> AL = semester.getSubjects();
             Subject[] subject = new Subject[AL.size()];
             subject = AL.toArray(subject);
-
-
 
             for (int i = 0; i < Size; i++) {
                 for(int j = 0; j < subject.length; j++ ){

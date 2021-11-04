@@ -101,7 +101,7 @@ public class view_result extends AppCompatActivity {
         CGPA = findViewById(R.id.t_Cgpa_value);
 
 
-        String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
+        String URL = GlobalClasss.URL;
         Gson gson = new Gson();
         String req="/" + Id;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -190,11 +190,9 @@ public class view_result extends AppCompatActivity {
             }
             Total_Credit_sem.setText(Double.toString(Credit_sum));
             Total_Credit.setText(Double.toString(Credit_sum));
-
         }
 
         else{
-
             final int size = found.getS2().getSubjects().size();
             double SGPA_Numerator = 0;
             double CGPA_Numerator = 0;
