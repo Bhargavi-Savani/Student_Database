@@ -21,24 +21,31 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".modify_student_intermediate"
+            android:parentActivityName=".FirstPageTeachers"
             android:exported="true" />
         <activity
             android:name=".add_student_intermediate"
+            android:parentActivityName=".FirstPageTeachers"
             android:exported="true" />
         <activity
             android:name=".view_result_intermediate"
+            android:parentActivityName=".FirstPageTeachers"
             android:exported="true" />
         <activity
             android:name=".view_result"
+            android:parentActivityName=".view_result_intermediate"
             android:exported="true" />
         <activity
             android:name=".modify_student"
+            android:parentActivityName=".modify_student_intermediate"
             android:exported="true" />
         <activity
             android:name=".delete_student"
+            android:parentActivityName=".FirstPageTeachers"
             android:exported="true" />
         <activity
             android:name=".add_student"
+            android:parentActivityName=".add_student_intermediate"
             android:exported="true" />
         <activity
             android:name=".Result_home"

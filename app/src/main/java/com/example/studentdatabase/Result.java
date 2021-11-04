@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 
 public class Result extends AppCompatActivity {
 
-    String Sem = new String();
+    String Sem;
 
     TextView Name;
     TextView ID;
@@ -25,9 +25,7 @@ public class Result extends AppCompatActivity {
     final int Size = 9;
 
     TextView[] Sub;
-
     TextView[] Sub_credit;
-
     TextView[] Sub_grade;
 
     TextView Semester;
@@ -100,13 +98,6 @@ public class Result extends AppCompatActivity {
         CGPA = findViewById(R.id.Cgpa_value);
 
 
-//        TODO 2 Create Object and API call
-        /**
-         * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
-         * Run 'ipconfig' at cmd to find it.
-         */
-        //Change IPAddress in GlobalClasss if not same
-
         String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + GlobalClasss.Student_Id;
@@ -133,11 +124,10 @@ public class Result extends AppCompatActivity {
                 }
         );
         requestQueue.add(objectRequest);
-//     TODO 2.
     }
 
     // DISPLAY FUNCTION
-    @SuppressLint("SetTextI18n")
+    @SuppressLint({"SetTextI18n", "DefaultLocale"})
     public void S_Result_Output(Student found){
 
         int informer = 0;       // VALUE = 0 IF PASS AND VALUE = 1 IF FAIL
@@ -164,6 +154,7 @@ public class Result extends AppCompatActivity {
             for (int i = 0; i < size; i++) {
                 if(found.getS1().getSubjects().get(i).getGradePoint() < 4){
                     informer = 1;
+                    break;
                 }
             }
 

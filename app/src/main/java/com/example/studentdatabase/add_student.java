@@ -121,46 +121,32 @@ public class add_student extends AppCompatActivity {
             Subject[] subject = new Subject[AL.size()];
             subject = AL.toArray(subject);
 
-            /*for(int i =0; i < Size; i++)
-            {
-                 subject[i] = new Subject();
-            }*/
-
             for (int i = 0; i < Size; i++) {
                 subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
                 subject[i].setGrade(SubjectGrade[i].getText().toString().toUpperCase());
                 subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString().toUpperCase()).toString()));
             }
 
-            ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
+            ArrayList<Subject> var = new ArrayList<>(Arrays.asList(subject));
             semester.setSubjects(var);
 
             semester.setSem(Integer.parseInt(Semester));
             student.setS1(semester);
-            // TODO api call to send sem1 object
             callPostWith(student);
         }
         else {
-            // TODO do api call for sem1 object and then add the sem2 data
-            //  fetched to your called object and send it back to api
-
             Semester semester = new Semester();
             ArrayList<Subject> AL = student.getS2().getSubjects();
             Subject[] subject = new Subject[AL.size()];
             subject = AL.toArray(subject);
 
-            /*for(int i =0; i < Size; i++)
-            {
-                 subject[i] = new Subject();
-            }*/
-
             for (int i = 0; i < Size; i++) {
                 subject[i].setCredit(Double.parseDouble(SubjectCredit[i].getText().toString()));
                 subject[i].setGrade(SubjectGrade[i].getText().toString().toUpperCase());
                 subject[i].setGradePoint(Integer.parseInt(GradePoints.valueOf(SubjectGrade[i].getText().toString().toUpperCase()).toString()));
             }
 
-            ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
+            ArrayList<Subject> var = new ArrayList<>(Arrays.asList(subject));
             semester.setSubjects(var);
 
             Gson gson = new Gson();
@@ -191,6 +177,15 @@ public class add_student extends AppCompatActivity {
             requestQueue.add(jsonObjectRequest);
         }
 
+        Intent intent = new Intent(this,FirstPageTeachers.class);
+        TextView Prompt = findViewById(R.id.confirmation_message);
+        Prompt.setText("Student Data added successfully");
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
     }
 
     void callPostWith(Student postStudent){
@@ -314,11 +309,5 @@ public class add_student extends AppCompatActivity {
             return Integer.toString(num);
         }
 
-        public int getint(String str){
-            num = GradePoints.valueOf(str.toUpperCase()).ordinal();
-            return num;
-        }
     }
-
-
 }

@@ -101,11 +101,6 @@ public class view_result extends AppCompatActivity {
         CGPA = findViewById(R.id.t_Cgpa_value);
 
 
-//        TODO 2 Create Object and API call
-        /**
-         * Remove that 1 for your IPAddress
-         * In case, it is changed for your lap, change it to
-         */
         String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
         String req="/" + Id;

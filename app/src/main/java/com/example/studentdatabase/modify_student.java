@@ -76,31 +76,12 @@ public class modify_student extends AppCompatActivity {
 
     public void ModifyButton(View view){
 
-        /*Subject[] subject = new Subject[3];
-        Semester semester = new Semester();
-        Student student = new Student();
-
-for(int i =0; i < Size; i++)
-{
-     subject[i] = new Subject();
-}
-
-        for (int i = 0; i < Size; i++) {
-            subject[i].setSubCode(CourseCodeValue[i].getText().toString());
-            subject[i].setGrade(CourseGradeValue[i].getText().toString());
-            subject[i].setGradePoint(Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString()).toString()));
-        }
-        ArrayList<Subject> var = new ArrayList<Subject>(Arrays.asList(subject));
-        semester.setSubjects(var);*/
-
         for(int i = 0; i<Size; i++){
             courseCodes[i] = CourseCodeValue[i].getText().toString();
             courseGrades[i] = CourseGradeValue[i].getText().toString();
             courseGradePoints[i] = Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString().toUpperCase()).toString());
         }
 
-
-        // TODO api call
         Gson gson = new Gson();
         String req="/" + ID;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -137,11 +118,7 @@ for(int i =0; i < Size; i++)
             Subject[] subject = new Subject[AL.size()];
             subject = AL.toArray(subject);
 
-            /*for (int i = 0; i < Size; i++) {
-                subject[i].setSubCode(CourseCodeValue[i].getText().toString());
-                subject[i].setGrade(CourseGradeValue[i].getText().toString());
-                subject[i].setGradePoint(Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString()).toString()));
-            }*/
+
             for (int i = 0; i < Size; i++) {
                 for(int j = 0; j < subject.length; j++ ){
                     if(subject[j].getSubCode().equalsIgnoreCase(courseCodes[i])){
@@ -164,11 +141,7 @@ for(int i =0; i < Size; i++)
             subject = AL.toArray(subject);
 
 
-            /*for (int i = 0; i < Size; i++) {
-                subject[i].setSubCode(CourseCodeValue[i].getText().toString());
-                subject[i].setGrade(CourseGradeValue[i].getText().toString());
-                subject[i].setGradePoint(Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString()).toString()));
-            }*/
+
             for (int i = 0; i < Size; i++) {
                 for(int j = 0; j < subject.length; j++ ){
                     if(subject[j].getSubCode().equalsIgnoreCase(courseCodes[i])){

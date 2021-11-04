@@ -27,17 +27,6 @@ public class StudentProfile extends AppCompatActivity {
     TextView Programme;
     TextView College;
 
-    /*static void setCurrent(String studentId, String studentName, Semester s1, Semester s2){
-        current = new Student();
-        current.setStudentId(studentId);
-        current.setStudentName(studentName);
-        ArrayList<Subject> sub1 = new ArrayList<>();
-        sub1.addAll(s1.getSubjects());
-        current.setS1(new Semester(s1.getSem(),sub1));
-        ArrayList<Subject> sub2 = new ArrayList<>();
-        sub2.addAll(s2.getSubjects());
-        current.setS2(new Semester(s2.getSem(), sub2));
-    }*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,11 +40,7 @@ public class StudentProfile extends AppCompatActivity {
         Programme = findViewById(R.id.Profile_programme);
         College = findViewById(R.id.Profile_college);
 
-//    TODO 1. Api call and convert it into object
-        /**
-         * Change this String IPAddress to your local WiFi Adapter's IPv4 Address.
-         * Run 'ipconfig' at cmd to find it.
-         */
+
         String IPAddress1 = "192.168.1.193";
         String URL = "http://"+ IPAddress1 + ":8080/api/student";
         Gson gson = new Gson();
@@ -86,7 +71,6 @@ public class StudentProfile extends AppCompatActivity {
                     }
                 }
         );
-//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy( 50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonObjectRequest);
     }
 

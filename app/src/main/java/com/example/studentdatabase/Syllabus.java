@@ -33,12 +33,12 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
 
         DropDown = findViewById(R.id.dropdown_menu);
 
-        DropDown.setOnItemSelectedListener(this);
-
         // CREATING THE DROPDOWN
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         DropDown.setAdapter(adapter);
+
+        DropDown.setOnItemSelectedListener(this);
     }
 
     // OVERRIDING DROPDOWN METHOD
@@ -46,13 +46,13 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
         if(adapterView.getId() ==  R.id.dropdown_menu){
-            String Semester = adapterView.getItemAtPosition(i).toString();  // FETCHING THE SELECTED SEMESTER VALUE
+            String Year = adapterView.getItemAtPosition(i).toString();  // FETCHING THE SELECTED SEMESTER VALUE
 
-            textView2.setText("Link for " + Semester + " Syllabus is");
+            Link.setText("Click Here");
+            textView2.setText(Year + " Year Syllabus");
 
             // SETTING LINKS DEPENDING UPON THE SEMESTER CHOSEN
-            if(Semester.equals("First")){
-                Link.setText(getResources().getString(R.string.FirstYear));
+            if(Year.equals("First")){
                 Link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -64,8 +64,7 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
 
 
             }
-            else if(Semester.equals("Second")){
-                Link.setText((getResources().getString(R.string.SecondYear)));
+            else if(Year.equals("Second")){
                 Link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -75,9 +74,7 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
                     }
                 });
             }
-            else if(Semester.equals("Third")){
-                Link.setText(getResources().getString(R.string.ThirdYear));
-                Link.setOnClickListener(new View.OnClickListener() {
+            else if(Year.equals("Third")){ Link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Uri uri = Uri.parse("https://drive.google.com/file/d/19OqZ0LFUu0Jjg2uRsF9CAysaiElXh-uu/view?usp=drivesdk");
@@ -86,8 +83,7 @@ public class Syllabus extends AppCompatActivity implements AdapterView.OnItemSel
                     }
                 });
             }
-            else if(Semester.equals("Fourth")){
-                Link.setText(getResources().getString(R.string.FourthYear));
+            else if(Year.equals("Fourth")){
                 Link.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

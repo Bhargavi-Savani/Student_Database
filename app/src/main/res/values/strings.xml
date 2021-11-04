@@ -33,12 +33,13 @@
     <string name="ID">Student ID</string>
     <string name="Select">Select Year</string>
 
-    <string name="FirstYear">First Year Syllabus</string>
-    <string name="SecondYear">Second Year Syllabus</string>
-    <string name="ThirdYear">Third Year Syllabus</string>
-    <string name="FourthYear">Fourth Year Syllabus</string>
 
     <string name="HINTforADD">value</string>
-
+    <string-array name="SpinnerValue">
+        <item>First Year</item>
+        <item>Second Year</item>
+        <item>Third Year</item>
+        <item>Fourth Year</item>
+    </string-array>
 
 </resources>

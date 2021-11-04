@@ -1,5 +1,6 @@
 package com.example.studentdatabase;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -36,7 +37,6 @@ public class delete_student extends AppCompatActivity {
 
         String ID = d_id.getText().toString();
 
-        // TODO
         String URL = "http://"+ GlobalClasss.IPAddress1 + ":8080/api/student";
         String req="/" + ID;
         RequestQueue requestQueue = Volley.newRequestQueue(this);
@@ -72,9 +72,16 @@ public class delete_student extends AppCompatActivity {
                 }
         );
         requestQueue.add(jsonObjectRequest);
-        // ADD CODE B/W THIS TWO COMMENTS
 
         display_view.setText("Student Profile deleted");
+        Intent intent = new Intent(this,FirstPageTeachers.class);
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        startActivity(intent);
     }
 
 }
