@@ -10,7 +10,7 @@
     <ImageButton
         android:id="@+id/IB1"
         android:layout_width="380dp"
-        android:layout_height="100dp"
+        android:layout_height="103dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="70dp"
         android:layout_marginEnd="15dp"
@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/sprofile"
+        app:srcCompat="@drawable/add_student"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IB1"
-        app:srcCompat="@drawable/syllabus"
+        app:srcCompat="@drawable/delete_student"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
@@ -52,13 +52,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IB2"
-        app:srcCompat="@drawable/sprofile"
+        app:srcCompat="@drawable/modify_student"
         tools:ignore="SpeakableTextPresentCheck,SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/IB4"
         android:layout_width="380dp"
-        android:layout_height="100dp"
+        android:layout_height="109dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
@@ -68,6 +68,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IB3"
-        app:srcCompat="@drawable/syllabus"
+        app:srcCompat="@drawable/view_result"
         tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>
