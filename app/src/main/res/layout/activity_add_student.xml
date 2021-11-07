@@ -407,7 +407,7 @@
         android:layout_height="48dp"
         android:onClick="Get_Input"
         android:text="@string/SubmitButton"
-        android:background="@drawable/custom_button"
+        android:backgroundTint="@color/green"
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textAlignment="center"
