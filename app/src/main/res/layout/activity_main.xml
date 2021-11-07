@@ -5,94 +5,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="@color/black">
+    android:background="@color/black"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/Textview1"
         android:layout_width="159dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="198dp"
+        android:background="@drawable/spinner_border"
         android:text="@string/UserNameText"
-        android:textColor="@color/green"
         android:textAlignment="center"
+        android:textColor="@color/green"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/UserId"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintBottom_toTopOf="@+id/UserId"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886" />
 
     <TextView
         android:id="@+id/credit_value"
         android:layout_width="159dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="198dp"
+        android:background="@drawable/spinner_border"
         android:text="@string/PasswordText"
         android:textAlignment="center"
-        android:textSize="24sp"
         android:textColor="@color/green"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/UserId"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/Password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        app:layout_constraintVertical_bias="0.93" />
 
     <EditText
         android:id="@+id/UserId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="82dp"
         android:autoText="true"
+        android:background="@drawable/spinner_border"
         android:ems="10"
         android:hint="@string/UserId"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         android:textAlignment="center"
         android:textColor="@color/green"
-        android:textColorHint="@color/green"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/credit_value"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.923"
         tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/Password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_width="275dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginEnd="82dp"
         android:autoText="false"
+        android:background="@drawable/spinner_border"
         android:ems="10"
         android:hint="@string/PswHint"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textAlignment="center"
-        android:textColorHint="@color/green"
         android:textColor="@color/green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/UserId"
-        app:layout_constraintVertical_bias="0.03" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.746" />
 
     <Button
         android:id="@+id/SubButton"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:text="@string/SubmitButton"
-        android:background="@drawable/custom_button"
-        android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_width="108dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="152dp"
+        android:text="@string/loginbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.802" />
+        app:layout_constraintVertical_bias="0.881" />
 
     <TextView
         android:id="@+id/sub1"
@@ -100,9 +106,29 @@
         android:layout_height="wrap_content"
         android:text="@string/Prompt"
         android:textColor="@color/green"
+        android:textSize="16sp"
+        app:circularflow_radiusInDP="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SubButton" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        app:cardCornerRadius="75dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.04000002">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:outlineProvider="none"
+            app:srcCompat="@drawable/profile" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

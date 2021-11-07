@@ -5,6 +5,7 @@
     <string name="PasswordText">Password</string>
     <string name="PswHint">Enter Your Password</string>
     <string name="SubmitButton">Submit</string>
+    <string name="loginbutton">Login</string>
     <string name="Prompt"> Enter Details</string>
     <string name="title_activity_page3">Page_3</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
