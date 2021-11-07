@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Student Database</string>
-    <string name="UserNameText">User Id</string>
-    <string name="UserId">Enter Your User Id</string>
+    <string name="UserNameText">User ID</string>
+    <string name="UserId">Enter Your User ID</string>
     <string name="PasswordText">Password</string>
     <string name="PswHint">Enter Your Password</string>
     <string name="SubmitButton">Submit</string>
@@ -31,7 +31,7 @@
 
     <string name="Name">Name</string>
     <string name="ID">Student ID</string>
-    <string name="Select">Select Year</string>
+    <string name="Select">Year</string>
 
 
     <string name="HINTforADD">value</string>

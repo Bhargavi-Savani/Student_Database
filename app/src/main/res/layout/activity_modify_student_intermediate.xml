@@ -34,6 +34,8 @@
         android:inputType="textPersonName"
         android:textColorHint="@color/green"
         android:textSize="20sp"
+        android:textColor="@color/green"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/MSD_ID"
         app:layout_constraintTop_toBottomOf="@+id/MSD" />
@@ -55,12 +57,12 @@
 
     <Button
         android:id="@+id/MSD_BUTTON"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
         android:layout_marginStart="160dp"
         android:layout_marginTop="63dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="180dp"
+        android:layout_marginBottom="140dp"
         android:background="@drawable/custom_button"
         android:onClick="msg_send_data"
         android:text="Modify"
@@ -70,7 +72,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/MSD_SEM_VALUE" />
+        app:layout_constraintTop_toBottomOf="@+id/MSD_SEM_VALUE"
+        app:layout_constraintVertical_bias="0.739" />
 
     <TextView
         android:id="@+id/MSD_SEM"
@@ -91,7 +94,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="6dp"
         android:ems="10"
         android:hint="Enter semester"
@@ -99,6 +102,7 @@
         android:textColor="@color/green"
         android:textColorHint="@color/green"
         android:textSize="20sp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/MSD_SEM"
         app:layout_constraintTop_toBottomOf="@+id/MSD_ID_VALUE" />

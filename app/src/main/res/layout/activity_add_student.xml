@@ -403,10 +403,15 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="200dp"
-        android:layout_height="55dp"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
         android:onClick="Get_Input"
         android:text="@string/SubmitButton"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
