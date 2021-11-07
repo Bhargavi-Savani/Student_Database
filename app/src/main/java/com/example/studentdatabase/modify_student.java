@@ -79,7 +79,8 @@ public class modify_student extends AppCompatActivity {
         for(int i = 0; i<Size; i++){
             courseCodes[i] = CourseCodeValue[i].getText().toString();
             courseGrades[i] = CourseGradeValue[i].getText().toString();
-            courseGradePoints[i] = Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString().toUpperCase()).toString());
+            if(CourseGradeValue[i].getText().toString().trim().length() > 0)
+                courseGradePoints[i] = Integer.parseInt(add_student.GradePoints.valueOf(CourseGradeValue[i].getText().toString().toUpperCase()).toString());
         }
 
         Gson gson = new Gson();

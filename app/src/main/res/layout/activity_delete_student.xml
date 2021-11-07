@@ -65,6 +65,7 @@
         android:layout_marginTop="194dp"
         android:layout_marginBottom="180dp"
         android:backgroundTint="@color/green"
+        android:hapticFeedbackEnabled="true"
         android:onClick="DELETE_STUDENT"
         android:text="Delete"
         android:textAlignment="center"

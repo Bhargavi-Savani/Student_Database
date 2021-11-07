@@ -198,6 +198,7 @@
         android:layout_marginEnd="56dp"
         android:layout_marginBottom="70dp"
         android:backgroundTint="@color/green"
+        android:hapticFeedbackEnabled="true"
         android:onClick="ModifyButton"
         android:text="Modify"
         android:textAlignment="center"

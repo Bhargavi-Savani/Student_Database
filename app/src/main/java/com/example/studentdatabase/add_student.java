@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -46,6 +47,10 @@ public class add_student extends AppCompatActivity {
     EditText[] SubjectCredit;
     EditText[] SubjectGrade;
 
+    Button LoginButton;
+
+    int counter = 1;
+
     String URL = GlobalClasss.URL;
 
     @Override
@@ -57,6 +62,8 @@ public class add_student extends AppCompatActivity {
         SubjectCode = new TextView[Size];
         SubjectCredit = new EditText[Size];
         SubjectGrade = new EditText[Size];
+
+        LoginButton = findViewById(R.id.AD_LoginButton);
 
         // collecting course view id
         SubjectCode[0] = findViewById(R.id.AD_SUB1);
@@ -132,6 +139,7 @@ public class add_student extends AppCompatActivity {
             semester.setSem(Integer.parseInt(Semester));
             student.setS1(semester);
             callPostWith(student);
+            counter--;
         }
         else {
             Semester semester = new Semester();
@@ -174,6 +182,9 @@ public class add_student extends AppCompatActivity {
                     }
             );
             requestQueue.add(jsonObjectRequest);
+        }
+        if(counter == 0) {
+            LoginButton.setEnabled(false);
         }
     }
 
